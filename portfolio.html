@@ -1,0 +1,2442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Kathleen Jacob — Communications Expert</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --ink: #1a1a1a;
+  --cream: #f7f4ef;
+  --accent1: #e85d4a;
+  --accent2: #3b82b0;
+  --accent3: #e9a84c;
+  --accent4: #5bab72;
+  --accent5: #9b6bbf;
+  --light: #ffffff;
+  --muted: #7a7570;
+  --border: rgba(26,26,26,0.12);
+  --serif: 'Playfair Display', Georgia, serif;
+  --sans: 'DM Sans', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: auto; }
+body { font-family: var(--sans); background: var(--cream); color: var(--ink); overflow-x: hidden; }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1rem 2.5rem;
+  background: transparent; border-bottom: 1px solid transparent;
+  transition: background 0.35s ease, border-color 0.35s ease;
+}
+.nav-logo {
+  font-family: var(--serif); font-size: 1.1rem; letter-spacing: 0.02em;
+  color: var(--ink); text-decoration: none;
+  padding: 0.5rem 0; min-height: 44px; display: flex; align-items: center;
+  transition: color 0.35s ease;
+}
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a {
+  font-size: 0.82rem; font-weight: 500; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--muted); text-decoration: none;
+  transition: color 0.2s; padding: 0.5rem 0; min-height: 44px;
+  display: flex; align-items: center;
+}
+.nav-links a:hover { color: var(--ink); }
+.nav-hamburger {
+  display: none; flex-direction: column; justify-content: center;
+  gap: 5px; background: none; border: none; cursor: pointer;
+  padding: 0.5rem; min-width: 44px; min-height: 44px; align-items: center;
+}
+.nav-hamburger span {
+  display: block; width: 22px; height: 1.5px; background: var(--ink);
+  transition: transform 0.3s, opacity 0.3s; transform-origin: center;
+}
+.nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+.nav-drawer {
+  display: none; position: fixed; top: 57px; left: 0; right: 0;
+  background: transparent; border-bottom: 1px solid transparent;
+  z-index: 99; padding: 1rem 0;
+  transform: translateY(-8px); opacity: 0;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+  pointer-events: none;
+}
+.nav-drawer.open { transform: translateY(0); opacity: 1; pointer-events: auto; }
+.nav-drawer li { list-style: none; }
+.nav-drawer a {
+  display: flex; align-items: center; min-height: 52px; padding: 0 2rem;
+  font-size: 0.88rem; font-weight: 500; letter-spacing: 0.1em;
+  text-transform: uppercase; color: rgba(255,255,255,0.8);
+  text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.08);
+  transition: color 0.15s, background 0.15s;
+}
+.nav-drawer a:active { background: rgba(255,255,255,0.12); color: white; }
+nav.scrolled { background: var(--ink); border-bottom: 1px solid rgba(255,255,255,0.08); }
+nav.scrolled .nav-logo { color: var(--accent3); }
+nav.scrolled .nav-links a { color: rgba(255,255,255,0.8); }
+nav.scrolled .nav-links a:hover { color: white; }
+nav.scrolled .nav-hamburger span { background: var(--accent3); }
+
+/* ── HERO ── */
+#hero {
+  min-height: 100vh; display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 8rem 4rem 6rem; background: var(--cream);
+  position: relative; overflow: hidden; text-align: center;
+}
+.hero-bg-text {
+  position: absolute; font-family: var(--serif);
+  font-size: clamp(12rem, 22vw, 22rem); font-weight: 700;
+  color: rgba(26,26,26,0.04); letter-spacing: -0.04em;
+  user-select: none; pointer-events: none; white-space: nowrap;
+  top: 50%; left: 50%; transform: translate(-50%, -50%); line-height: 1;
+}
+.hero-left {
+  position: relative; z-index: 2; display: flex; flex-direction: column;
+  align-items: center; max-width: 900px; width: 100%;
+}
+.hero-eyebrow {
+  font-size: 0.75rem; font-weight: 500; letter-spacing: 0.28em;
+  text-transform: uppercase; color: var(--accent2); margin-bottom: 1.5rem;
+  display: flex; align-items: center; gap: 1rem;
+}
+.hero-eyebrow::before, .hero-eyebrow::after {
+  content: ''; display: block; width: 40px; height: 1px;
+  background: var(--accent2); opacity: 0.7;
+}
+.hero-name {
+  font-family: var(--serif); font-size: clamp(4rem, 10vw, 9rem);
+  line-height: 1.0; color: var(--ink); margin-bottom: 0.5rem; letter-spacing: -0.02em;
+}
+.hero-deco { display: flex; flex-direction: row; gap: 6px; justify-content: center; }
+.hero-deco--top { margin-bottom: 2.5rem; }
+.hero-deco--bottom { margin-top: 2.75rem; }
+.hero-deco-line { display: block; width: 60px; height: 2px; background: var(--accent2); border-radius: 2px; }
+.hero-deco-line--short { width: 30px; opacity: 0.4; }
+.hero-tagline {
+  font-size: clamp(1rem, 1.8vw, 1.2rem); font-weight: 300; line-height: 1.7;
+  color: var(--muted); max-width: 600px; margin-bottom: 2.5rem;
+}
+.hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+.hero-right { display: none; }
+.btn-primary {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 48px; width: 180px;
+  background: var(--accent3); color: var(--ink);
+  font-size: 0.85rem; font-weight: 500; letter-spacing: 0.07em;
+  text-transform: uppercase; text-decoration: none;
+  border-radius: 2px; border: 1.5px solid var(--accent3);
+  transition: background 0.2s, transform 0.15s;
+}
+.btn-primary:hover { background: #d4942a; transform: translateY(-1px); }
+.btn-outline {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 48px; width: 180px;
+  border: 1.5px solid var(--accent2); color: var(--accent2);
+  font-size: 0.85rem; font-weight: 500; letter-spacing: 0.07em;
+  text-transform: uppercase; text-decoration: none;
+  border-radius: 2px; background: none; cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-outline:hover { background: var(--accent2); color: white; border-color: var(--accent2); }
+#hero-canvas {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  z-index: 1; pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  #hero-canvas { opacity: 0.4; }
+}
+@media (max-width: 480px) {
+  #hero-canvas { display: none; }
+}
+
+
+/* ── SECTIONS ── */
+section {
+  padding: 6rem 4rem; max-width: 1100px; margin: 0 auto;
+}
+.section-label {
+  font-size: 0.72rem; font-weight: 500; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--accent1); margin-bottom: 0.75rem;
+  display: flex; align-items: center; gap: 0.75rem;
+}
+.section-label::before {
+  content: ''; display: inline-block; width: 28px; height: 1.5px; background: var(--accent1);
+}
+.section-title {
+  font-family: var(--serif); font-size: clamp(2rem, 4vw, 3.2rem);
+  line-height: 1.1; color: var(--ink); margin-bottom: 1rem;
+}
+
+/* ── WHO I AM ── */
+#who {
+  background: var(--light); max-width: 100%; padding: 6rem 0;
+  position: relative; z-index: 2; box-shadow: 0 -24px 60px rgba(0,0,0,0.2);
+}
+#who .inner { max-width: 1100px; margin: 0 auto; padding: 0 4rem; overflow: hidden; }
+.who-left { float: left; width: 340px; margin: 0.5rem 3rem 1.5rem 0; }
+.who-photo-card { position: relative; border-radius: 6px; overflow: hidden; }
+.who-photo-img { width: 100%; height: auto; max-height: 600px; object-fit: cover; object-position: center top; display: block; border-radius: 6px 6px 0 0; }
+.who-photo-placeholder {
+  width: 100%; min-height: 480px;
+  background: linear-gradient(135deg, #e8e4dd 0%, #d4cfc7 100%);
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 6px 6px 0 0;
+}
+.who-photo-placeholder span {
+  font-size: 0.75rem; font-weight: 500; letter-spacing: 0.18em;
+  text-transform: uppercase; color: rgba(26,26,26,0.35);
+}
+.who-info-card {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  background: var(--ink); padding: 1.25rem 1.5rem;
+  display: flex; align-items: center; gap: 1rem;
+}
+.who-info-divider { width: 100%; height: 1.5px; background: var(--accent1); margin: 0.35rem 0; }
+.who-info-title { font-size: 0.92rem; font-weight: 500; color: white; margin-bottom: 0.15rem; }
+.who-info-company { font-size: 0.78rem; font-weight: 400; color: var(--accent3); margin-bottom: 0.25rem; letter-spacing: 0.04em; }
+.who-info-location { font-size: 0.75rem; color: rgba(255,255,255,0.5); display: flex; align-items: center; gap: 0.3rem; }
+.who-bio { font-size: 1.05rem; font-weight: 300; line-height: 1.85; color: var(--ink); }
+.who-value-block { margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border); }
+.who-value-block:last-child { border-bottom: none; padding-bottom: 0; }
+.who-value-eyebrow {
+  font-size: 0.68rem; font-weight: 500; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--accent1); margin-bottom: 0.6rem;
+  display: flex; align-items: center; gap: 0.6rem;
+}
+.who-value-eyebrow::before {
+  content: ''; display: inline-block; width: 20px; height: 1.5px;
+  background: var(--accent1); flex-shrink: 0;
+}
+
+/* ── WHAT YOU'LL GET ── */
+#what-outer { position: relative; height: calc(100vh + 2300px); background: var(--cream); margin-top: -2rem; }
+#what-sticky {
+  position: sticky; top: 0; height: 100vh; margin-bottom: 0;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 0 4rem; max-width: 1100px; margin: 0 auto; overflow: hidden;
+}
+#what-header { margin-bottom: 2.5rem; flex-shrink: 0; }
+.what-scroll-hint {
+  display: flex; align-items: center; gap: 0.5rem;
+  font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--muted); margin-top: 0.75rem;
+}
+.what-scroll-hint svg { animation: slideRight 1.5s ease-in-out infinite; }
+@keyframes slideRight {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(5px); }
+}
+#what-track-wrapper { overflow: hidden; flex-shrink: 0; }
+#what-track { display: flex; gap: 2rem; will-change: transform; }
+.what-slide {
+  min-width: 320px; max-width: 320px; background: var(--light);
+  border-radius: 6px; padding: 2.5rem 2rem;
+  border-top: 3px solid var(--accent2); flex-shrink: 0;
+  opacity: 0.35; transform: scale(0.97);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.what-slide.active { opacity: 1; transform: scale(1); border-top-color: var(--accent1); }
+.what-slide.near { opacity: 0.7; transform: scale(0.985); }
+.what-slide-num {
+  font-family: var(--serif); font-size: 2.5rem; font-style: italic;
+  color: var(--accent3); line-height: 1; margin-bottom: 1rem;
+}
+.what-slide-title {
+  font-family: var(--serif); font-size: 1.3rem; color: var(--ink);
+  margin-bottom: 0.75rem; line-height: 1.25;
+}
+.what-slide-text { font-size: 0.87rem; font-weight: 300; line-height: 1.75; color: var(--muted); }
+.what-progress-bar {
+  height: 2px; background: var(--border); border-radius: 2px;
+  margin-top: 2rem; overflow: hidden; flex-shrink: 0;
+}
+.what-progress-fill { height: 100%; background: var(--accent2); border-radius: 2px; width: 0%; transition: width 0.1s linear; }
+
+.what-next-preview {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  margin-top: 1.5rem;
+  flex-shrink: 0;
+}
+.what-next-preview.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.what-counter { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.15em; color: var(--muted); margin-top: 0.75rem; flex-shrink: 0; }
+
+/* ── SKILLS NETWORK ── */
+
+.toolkit-header { background: var(--cream); padding: 2.5rem 0 1rem; }
+.toolkit-hint { font-size: 0.78rem; color: var(--muted); font-style: italic; margin-top: 0.25rem; }
+
+#skills-network-section { position: relative; height: clamp(600px, 75vw, 1100px); }
+
+#skill-overlay {
+  display: none;
+  position: absolute;
+  inset: 0;
+  background: rgba(26,26,26,0.92);
+  z-index: 20;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+#skill-overlay.open { display: flex; }
+#skill-overlay-inner {
+  background: var(--light);
+  border-radius: 8px;
+  padding: 1.5rem;
+  width: 100%;
+  max-width: 360px;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+}
+#skill-overlay-close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  background: none;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  color: var(--muted);
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#skill-overlay-title {
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 1rem;
+  padding-right: 1.5rem;
+  border-bottom: 2px solid currentColor;
+  padding-bottom: 0.5rem;
+}
+#skill-overlay-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+#skill-overlay-list li {
+  font-size: 0.88rem;
+  font-weight: 400;
+  color: var(--ink);
+  padding: 0.4rem 0.75rem;
+  border-radius: 20px;
+  background: var(--cream);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+#skill-overlay-list li::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--overlay-color, var(--accent2));
+  flex-shrink: 0;
+}
+
+#skills-network-section #wrap { position: relative; width: 100%; height: 100%; display: flex; flex-direction: column; }
+#skills-network-section #header-block { flex-shrink: 0; text-align: left; padding: 1rem 4rem 0.75rem; background: var(--cream); z-index: 5; pointer-events: none; }
+#skills-network-section .header-eyebrow { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent1); display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem; }
+#skills-network-section .header-eyebrow::before { content: ''; display: inline-block; width: 28px; height: 1.5px; background: var(--accent1); }
+#skills-network-section .header-title { font-family: var(--serif); font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 700; color: var(--ink); line-height: 1.15; margin-bottom: 0.4rem; }
+#skills-network-section .header-hint { font-size: 0.78rem; color: var(--muted); font-style: italic; }
+#skills-network-section #svg-wrap { flex: 1; position: relative; overflow: hidden; min-height: 0; }
+#skills-network-section svg { width: 100%; height: 100%; display: block; cursor: default; overflow: visible; }
+#skills-network-section .tooltip { position: absolute; background: var(--ink); color: var(--light); padding: 6px 11px; border-radius: 4px; font-family: var(--sans); font-size: 11px; pointer-events: none; opacity: 0; transition: opacity .15s; max-width: 180px; white-space: normal; line-height: 1.45; z-index: 10; }
+
+/* ── MINI BRIDGE (What → Approach) ── */
+.mini-bridge-wrapper {
+  position: relative; background: var(--ink);
+  padding: 6rem 4rem; overflow: hidden;
+}
+.mini-bridge-bg {
+  position: absolute; font-family: var(--serif);
+  font-size: clamp(8rem, 18vw, 18rem); font-weight: 700;
+  color: rgba(255,255,255,0.03); letter-spacing: -0.04em;
+  user-select: none; pointer-events: none; white-space: nowrap;
+  top: 50%; left: 50%; transform: translate(-50%, -50%);
+}
+.mini-bridge-cards {
+  position: relative; z-index: 2;
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 2rem; max-width: 1100px; margin: 0 auto 3rem;
+}
+.mini-bridge-card { border-top: 2px solid var(--accent3); padding-top: 1.5rem; }
+.mini-bridge-card-num { font-family: var(--serif); font-size: 1.5rem; color: var(--accent3); margin-bottom: 1rem; line-height: 1; }
+.mini-bridge-card-statement { font-family: var(--serif); font-size: clamp(1.4rem, 2.2vw, 1.9rem); line-height: 1.25; color: white; }
+.mini-bridge-card-statement em { color: var(--accent3); font-style: italic; }
+.mini-bridge-footer {
+  position: relative; z-index: 2; max-width: 1100px; margin: 0 auto;
+  font-size: 0.78rem; font-weight: 500; letter-spacing: 0.2em;
+  text-transform: uppercase; color: rgba(255,255,255,0.35);
+  display: flex; align-items: center; gap: 1rem;
+}
+.mini-bridge-footer::after { content: ''; flex: 1; height: 1px; background: rgba(255,255,255,0.1); }
+
+/* ── MY APPROACH ── */
+.approach-sticky-wrapper { position: relative; background: #ede9e3; height: 250vh; }
+#approach {
+  background: #ede9e3; max-width: 100%; padding: 6rem 0;
+  position: sticky; top: 0; z-index: 2;
+}
+#approach .inner { max-width: 1100px; margin: 0 auto; padding: 0 4rem; }
+#approach .section-label { color: var(--accent1); }
+#approach .section-label::before { background: var(--accent1); }
+#approach .section-title { color: var(--ink); }
+.approach-grid { margin-top: 3.5rem; }
+.approach-text { font-size: 1.05rem; font-weight: 300; line-height: 1.85; color: var(--muted); max-width: 640px; margin-bottom: 3rem; }
+.approach-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.flip-card { perspective: 1000px; cursor: pointer; }
+.flip-card-inner {
+  position: relative; width: 100%;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+.flip-card:hover .flip-card-inner,
+.flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
+.flip-card-front, .flip-card-back {
+  border-radius: 6px; backface-visibility: hidden; -webkit-backface-visibility: hidden;
+  padding: 1.5rem 1.25rem; display: flex; flex-direction: column;
+  width: 100%; box-sizing: border-box;
+}
+.flip-card-front {
+  background: var(--ink); border: 1px solid rgba(255,255,255,0.08);
+  border-top: 3px solid var(--accent3);
+  justify-content: center; align-items: center; text-align: center;
+  gap: 0.75rem; min-height: 260px;
+}
+.flip-card-back {
+  position: absolute; inset: 0;
+  background: var(--light); border: 2px solid var(--ink);
+  border-top: 3px solid var(--accent3);
+  transform: rotateY(180deg); justify-content: flex-start; overflow-y: auto;
+  padding: 1.25rem;
+}
+.flip-num { font-family: var(--serif); font-size: 2.5rem; font-style: italic; line-height: 1; color: var(--accent3); }
+.flip-title { font-size: 1rem; font-weight: 500; color: white; line-height: 1.35; text-align: center; }
+.flip-hint { font-size: 0.7rem; color: rgba(255,255,255,0.3); margin-top: 0.5rem; letter-spacing: 0.05em; }
+.flip-desc { font-size: clamp(0.72rem, 1.1vw, 0.82rem); font-weight: 300; line-height: 1.6; color: var(--ink); }
+
+/* ── SLASH BRIDGE ── */
+.slash-bridge {
+  position: relative; height: 220px; background: var(--cream);
+  overflow: hidden; display: flex; align-items: center; justify-content: center; z-index: 2;
+}
+.slash-bridge-canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+
+/* ── CASE STUDIES ── */
+#cases {
+  position: relative; z-index: 3;
+  box-shadow: 0 -20px 60px rgba(0,0,0,0.3);
+  background: var(--cream); max-width: 100%; padding: 6rem 0;
+}
+#cases .inner { max-width: 1100px; margin: 0 auto; padding: 0 4rem; }
+.cases-section-header {
+  background: var(--accent1);
+  margin: 0 -4rem 3.5rem -4rem; padding: 3rem 4rem;
+}
+.cases-section-header-inner { max-width: 700px; }
+.cases-eyebrow { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.25rem; }
+.cases-eyebrow-line { flex: 0 0 32px; height: 1.5px; background: rgba(255,255,255,0.5); }
+.cases-eyebrow-text { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.8); }
+.cases-section-title { font-family: var(--serif); font-size: clamp(2.8rem, 5vw, 4.5rem); line-height: 1.05; color: white; margin-bottom: 1.25rem; }
+.cases-section-title em { font-style: italic; color: rgba(255,255,255,0.65); }
+.cases-intro { font-size: 1rem; font-weight: 300; color: rgba(255,255,255,0.7); line-height: 1.75; max-width: 560px; }
+.cs-title-image { display: grid; grid-template-columns: 1fr 1.2fr; gap: 2.5rem; align-items: center; margin-bottom: 0; }
+.cs-title-col { display: flex; flex-direction: column; justify-content: center; gap: 1.25rem; }
+.cs-title-sub { font-size: 0.95rem; font-weight: 300; line-height: 1.8; color: var(--muted); }
+.cs-image-col .cs-screenshot { margin-bottom: 0; border-radius: 6px 6px 0 0; aspect-ratio: 4/3; }
+.cs-project-title { font-family: var(--serif); font-size: clamp(1.8rem, 3.5vw, 3rem); line-height: 1.1; color: var(--ink); border-left: 4px solid var(--accent1); padding-left: 1.25rem; }
+.cs-hero { background: var(--ink); border-radius: 0 0 6px 6px; padding: 3rem 3.5rem; display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 3rem; }
+.cs-hero-client { font-family: var(--serif); font-size: clamp(1.4rem, 2.5vw, 2rem); color: var(--accent3); line-height: 1.25; font-weight: 700; margin-bottom: 0.75rem; }
+.cs-hero-sub { font-size: 0.88rem; font-weight: 300; color: rgba(255,255,255,0.55); }
+.cs-screenshot { aspect-ratio: 16/9; background: #2a3a4a; border-radius: 6px; margin-bottom: 3rem; display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; border: 1px solid var(--border); }
+.cs-screenshot img { width: 100%; height: 100%; object-fit: cover; display: block; animation: kenBurns 14s ease-in-out infinite alternate; transform-origin: center center; }
+@keyframes kenBurns {
+  0% { transform: scale(1) translate(0, 0); }
+  100% { transform: scale(1.08) translate(-2%, -1.5%); }
+}
+.cs-body { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-bottom: 1.25rem; }
+.cs-block { margin-bottom: 0.75rem; }
+.cs-block-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 0.75rem; }
+.cs-block-icon { flex-shrink: 0; }
+.cs-block-label { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent1); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
+.cs-block-label::before { content: ''; width: 16px; height: 1.5px; background: var(--accent1); }
+.cs-block-title { font-family: var(--serif); font-size: 1.2rem; color: var(--ink); margin-bottom: 0.5rem; line-height: 1.2; }
+.cs-block-text { font-size: 0.87rem; font-weight: 300; line-height: 1.85; color: var(--muted); }
+.cs-section-divider { margin: 3rem 0 1.25rem; padding-bottom: 0.75rem; }
+.cs-section-heading { font-family: var(--serif); font-size: clamp(1.8rem, 3vw, 2.6rem); color: var(--ink); line-height: 1.1; }
+.cs-approach { margin-top: 3rem; margin-bottom: 3rem; background: #ede9e3; border-radius: 6px; padding: 2rem 2.5rem; }
+.cs-approach-title { font-family: var(--serif); font-size: clamp(1.8rem, 3vw, 2.6rem); color: var(--ink); margin-bottom: 1.5rem; }
+.cs-approach-divider { margin: 0.75rem 0 0.85rem; }
+.cs-tabs { display: flex; flex-wrap: wrap; gap: 0; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border); }
+.cs-tab { padding: 0.6rem 1.25rem; min-height: 44px; display: inline-flex; align-items: center; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.04em; border: none; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--muted); cursor: pointer; transition: all 0.18s; margin-bottom: -1px; }
+.cs-tab.active { color: var(--accent2); border-bottom-color: var(--accent2); }
+.cs-tab:hover:not(.active) { color: var(--ink); border-bottom-color: var(--border); }
+.cs-panel { display: none; }
+.cs-panel.active { display: flex; flex-direction: column; gap: 1.25rem; }
+.cs-panel-header { display: flex; align-items: center; gap: 0.6rem; font-family: var(--serif); font-size: 1.1rem; font-weight: 400; color: var(--accent2); margin-bottom: 0.75rem; }
+.cs-panel-text { font-size: 0.9rem; font-weight: 300; line-height: 1.9; color: var(--muted); background: var(--light); padding: 2rem 2.25rem; border-radius: 4px; border-left: 3px solid var(--accent2); flex: 1; min-width: 0; }
+.cs-phase2 { border: 1px solid rgba(59,130,176,0.25); background: rgba(59,130,176,0.05); border-radius: 6px; padding: 2.5rem; margin-bottom: 3rem; display: grid; grid-template-columns: auto 1fr; gap: 2rem; align-items: start; }
+.cs-phase2-badge { background: var(--accent2); color: white; font-size: 0.65rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; padding: 0.5rem 0.9rem; border-radius: 2px; white-space: nowrap; min-height: 44px; display: flex; align-items: center; }
+.cs-phase2-title { font-family: var(--serif); font-size: 1.15rem; color: var(--accent2); margin-bottom: 0.5rem; }
+.cs-phase2-text { font-size: 0.87rem; font-weight: 300; line-height: 1.8; color: var(--muted); }
+.cs-carousel { margin-bottom: 2.5rem; position: relative; }
+.cs-carousel-track { position: relative; overflow: hidden; border-radius: 6px; }
+.cs-carousel-card { display: none; animation: cardIn 0.4s ease; }
+.cs-carousel-card.active { display: block; }
+@keyframes cardIn { from { opacity: 0; transform: translateX(24px); } to { opacity: 1; transform: translateX(0); } }
+.cs-carousel-card.dir-prev { animation: cardInLeft 0.4s ease; }
+@keyframes cardInLeft { from { opacity: 0; transform: translateX(-24px); } to { opacity: 1; transform: translateX(0); } }
+.cs-carousel-card-inner { background: var(--light); border: 1px solid var(--border); border-radius: 6px; padding: 2.5rem 2.75rem; }
+.cs-carousel-quote { background: var(--ink); border-color: var(--ink); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+.cs-cq-text { font-family: var(--serif); font-size: 1.25rem; font-style: italic; color: white; line-height: 1.65; margin-bottom: 1.25rem; }
+.cs-cq-qmark { color: var(--accent3); font-size: 1.5em; line-height: 0; vertical-align: -0.2em; }
+.cs-cq-divider { height: 2px; background: var(--accent3); margin: 0 auto 1rem auto; width: 120px; border-radius: 2px; }
+.cs-cq-attr { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.5); }
+.cs-carousel-title { font-family: var(--serif); font-size: 1.25rem; color: var(--ink); margin-bottom: 0.75rem; line-height: 1.2; }
+.cs-carousel-controls { display: flex; align-items: center; justify-content: center; gap: 1.25rem; margin-top: 1.25rem; }
+.cs-carousel-btn { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--border); background: var(--light); color: var(--ink); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background 0.18s, border-color 0.18s, color 0.18s; flex-shrink: 0; }
+.cs-carousel-btn:hover { background: var(--ink); color: var(--cream); border-color: var(--ink); }
+.cs-carousel-dots { display: flex; gap: 0.5rem; align-items: center; }
+.cs-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border); cursor: pointer; transition: background 0.2s, transform 0.2s; }
+.cs-dot.active { background: var(--accent1); transform: scale(1.25); }
+.cs-results-interactive { margin-bottom: 2rem; }
+.cs-result-triggers { display: flex; align-items: center; justify-content: center; gap: 0; margin-bottom: 2rem; }
+.cs-result-trigger { display: flex; flex-direction: column; align-items: center; gap: 0.6rem; background: none; border: none; cursor: pointer; padding: 0.5rem; flex-shrink: 0; }
+.cs-rt-circle { width: 64px; height: 64px; border-radius: 50%; border: 1.5px solid rgba(232,93,74,0.4); background: var(--light); display: flex; align-items: center; justify-content: center; color: var(--accent1); transition: all 0.25s ease; animation: pulse-ring 2s ease-out var(--delay, 0s) infinite; }
+@keyframes pulse-ring { 0% { box-shadow: 0 0 0 0 rgba(232,93,74,0.35); } 70% { box-shadow: 0 0 0 12px rgba(232,93,74,0); } 100% { box-shadow: 0 0 0 0 rgba(232,93,74,0); } }
+.cs-result-trigger:hover .cs-rt-circle { border-color: var(--accent1); background: rgba(232,93,74,0.05); }
+.cs-result-trigger.active .cs-rt-circle { background: var(--accent1); border-color: var(--accent1); color: white; transform: scale(1.1); animation: none; box-shadow: none; }
+.cs-rt-label { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); text-align: center; max-width: 90px; line-height: 1.4; transition: color 0.2s; }
+.cs-result-trigger.active .cs-rt-label { color: var(--accent1); }
+.cs-rt-hint { font-size: 0.65rem; color: rgba(26,26,26,0.35); text-align: center; font-style: italic; transition: opacity 0.2s; }
+.cs-result-trigger.active .cs-rt-hint { opacity: 0; }
+.cs-rt-connector { flex: 1; height: 1.5px; background: var(--border); margin-bottom: 2rem; max-width: 80px; }
+.cs-result-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; align-items: stretch; }
+.cs-result-reveal { overflow: hidden; max-height: 0; opacity: 0; transform: translateY(16px); transition: max-height 0.5s ease, opacity 0.4s ease, transform 0.4s ease; display: flex; flex-direction: column; }
+.cs-result-reveal.visible { max-height: 300px; opacity: 1; transform: translateY(0); }
+.cs-result-card { background: var(--light); border: 1px solid var(--border); border-radius: 4px; padding: 1.5rem 1.25rem; border-top: 3px solid var(--accent3); flex: 1; display: flex; align-items: flex-start; }
+.cs-result-text { font-size: 0.87rem; font-weight: 400; line-height: 1.65; color: var(--ink); }
+
+/* ── RESUME BRIDGE ── */
+.resume-bridge-wrapper { position: relative; background: var(--ink); padding: 7rem 2rem; text-align: center; overflow: hidden; }
+.resume-bridge-canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.resume-bridge-eyebrow { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.25em; text-transform: uppercase; color: var(--accent3); margin-bottom: 1.25rem; display: flex; align-items: center; justify-content: center; gap: 0.75rem; }
+.resume-bridge-eyebrow::before, .resume-bridge-eyebrow::after { content: ''; display: block; width: 32px; height: 1px; background: var(--accent3); opacity: 0.6; }
+.resume-bridge-content { position: relative; z-index: 2; max-width: 700px; margin: 0 auto; padding: 3rem 4rem; background: var(--ink); }
+.resume-bridge-eyebrow { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.25em; text-transform: uppercase; color: var(--accent1); margin-bottom: 1.25rem; display: flex; align-items: center; justify-content: center; gap: 0.75rem; }
+.resume-bridge-eyebrow::before, .resume-bridge-eyebrow::after { content: ''; display: block; width: 32px; height: 1px; background: var(--accent1); opacity: 0.6; }
+.resume-bridge-statement { font-family: var(--serif); font-size: clamp(1.6rem, 3vw, 2.6rem); font-style: italic; line-height: 1.25; color: white; margin-bottom: 1rem; }
+.resume-bridge-statement em { color: var(--accent3); font-style: italic; }
+.resume-bridge-sub { font-size: 0.9rem; font-weight: 300; color: rgba(255,255,255,0.5); line-height: 1.6; max-width: 480px; margin: 0 auto; }
+
+/* ── RESUME ── */
+#resume { background: var(--light); max-width: 100%; padding: 6rem 0; position: relative; z-index: 2; box-shadow: 0 -24px 60px rgba(0,0,0,0.25); }
+#resume .inner { max-width: 1100px; margin: 0 auto; padding: 0 4rem; }
+.resume-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; margin-top: 3.5rem; }
+.resume-section-title { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.5rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border); }
+.resume-job { border-bottom: 1px solid var(--border); }
+.resume-job:last-child { border-bottom: none; }
+.job-trigger { display: flex; align-items: center; width: 100%; background: none; border: none; padding: 1.25rem 0; cursor: pointer; text-align: left; }
+.job-trigger-left { flex: 1; min-width: 0; }
+.job-trigger-top { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin-bottom: 0.2rem; }
+.job-title { font-weight: 500; font-size: 0.95rem; color: var(--ink); }
+.job-dates { font-size: 0.75rem; color: var(--muted); white-space: nowrap; flex-shrink: 0; }
+.job-company { font-size: 0.82rem; color: var(--accent2); font-weight: 400; }
+.job-chevron { width: 28px; height: 28px; border-radius: 50%; border: 1.5px solid var(--border); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-left: 1rem; transition: background 0.2s, border-color 0.2s, transform 0.3s; color: var(--muted); }
+.job-chevron svg { transition: transform 0.3s cubic-bezier(0.4,0,0.2,1); }
+.resume-job.open .job-chevron { background: var(--accent1); border-color: var(--accent1); color: white; }
+.resume-job.open .job-chevron svg { transform: rotate(180deg); }
+.job-body { overflow: hidden; max-height: 0; transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1), opacity 0.3s ease; opacity: 0; }
+.resume-job.open .job-body { max-height: 2000px; opacity: 1; }
+.job-body-inner { padding-bottom: 1.5rem; }
+.job-summary { font-size: 0.88rem; font-weight: 300; line-height: 1.75; color: var(--muted); margin-bottom: 1.25rem; padding: 1rem 1.25rem; background: var(--cream); border-left: 3px solid var(--accent2); border-radius: 2px; }
+.job-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1.25rem; }
+.job-bullets li { font-size: 0.85rem; font-weight: 300; line-height: 1.6; color: var(--muted); padding-left: 1rem; position: relative; }
+.job-bullets li::before { content: '—'; position: absolute; left: 0; color: var(--accent1); }
+.job-highlights-label { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.75rem; margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid var(--border); }
+.job-highlight { margin-bottom: 1.1rem; padding-bottom: 1.1rem; border-bottom: 1px dashed var(--border); }
+.job-highlight:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.job-highlight-title { font-size: 0.85rem; font-weight: 500; color: var(--ink); margin-bottom: 0.25rem; display: flex; align-items: baseline; gap: 0.6rem; flex-wrap: wrap; }
+.job-highlight-dates { font-size: 0.72rem; color: var(--muted); font-weight: 400; }
+.job-highlight-text { font-size: 0.83rem; font-weight: 300; line-height: 1.7; color: var(--muted); }
+.education-item { margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border); }
+.education-item:last-child { border-bottom: none; }
+.edu-degree { font-weight: 500; font-size: 0.9rem; color: var(--ink); margin-bottom: 0.2rem; }
+.edu-school { font-size: 0.82rem; color: var(--accent2); margin-bottom: 0.15rem; }
+.edu-year { font-size: 0.75rem; color: var(--muted); }
+.skills-cloud { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.skill-tag { font-size: 0.78rem; font-weight: 400; color: var(--ink); background: var(--cream); border: 1px solid var(--border); padding: 0.45rem 0.85rem; min-height: 44px; display: inline-flex; align-items: center; border-radius: 2px; transition: background 0.15s; cursor: default; }
+.skill-tag:hover { background: var(--ink); color: var(--cream); }
+
+
+.awards-divider {
+  position: relative; background: var(--ink);
+  margin: 2.5rem -4rem; padding: 3.5rem 4rem;
+  overflow: hidden; text-align: center;
+}
+.awards-divider-canvas {
+  position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none;
+}
+.awards-divider-content {
+  position: relative; z-index: 2;
+  background: var(--ink); display: inline-block;
+  padding: 1.5rem 3rem;
+}
+.awards-divider-eyebrow {
+  font-size: 0.68rem; font-weight: 500; letter-spacing: 0.25em;
+  text-transform: uppercase; color: var(--accent3);
+  margin-bottom: 0.75rem;
+  display: flex; align-items: center; justify-content: center; gap: 0.75rem;
+}
+.awards-divider-eyebrow::before, .awards-divider-eyebrow::after {
+  content: ''; display: block; width: 28px; height: 1px;
+  background: var(--accent3); opacity: 0.6;
+}
+.awards-divider-headline {
+  font-family: var(--serif);
+  font-size: clamp(1.6rem, 2.8vw, 2.4rem);
+  line-height: 1.2; color: white;
+}
+.awards-divider-headline em {
+  color: var(--accent3); font-style: italic;
+}
+@media (max-width: 768px) {
+  .awards-divider { margin: 2rem -1.5rem; padding: 3rem 1.5rem; }
+}
+
+.award-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 2rem; }
+.award-stat { background: var(--light); border: 1.5px solid rgba(26,26,26,0.25); border-top: 3px solid var(--accent3); border-radius: 6px; padding: 1.5rem 1rem; text-align: center; }
+.award-stat-num { font-family: var(--serif); font-size: 2.5rem; font-weight: 700; color: var(--ink); line-height: 1; margin-bottom: 0.4rem; }
+.award-stat-label { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); line-height: 1.4; }
+.award-cards { display: flex; flex-direction: column; gap: 0; }
+.award-card { padding: 1rem 0; border-bottom: 1px solid var(--border); display: grid; grid-template-columns: auto 1fr auto; gap: 0.5rem 1rem; align-items: center; }
+.award-card:last-child { border-bottom: none; }
+.award-card-icon { color: var(--accent3); font-size: 0.9rem; grid-row: span 2; align-self: start; margin-top: 0.15rem; }
+.award-card-title { font-size: 0.88rem; font-weight: 500; color: var(--ink); line-height: 1.3; }
+.award-card-sub { font-size: 0.75rem; color: var(--muted); font-weight: 300; }
+.award-card-detail { display: none; }
+.award-card-year { font-size: 0.72rem; font-weight: 500; color: var(--accent2); grid-row: span 2; align-self: start; margin-top: 0.15rem; white-space: nowrap; }
+.award-card--emmy { background: rgba(233,168,76,0.15); border-radius: 4px; padding: 1rem; border: 1px solid rgba(233,168,76,0.35); border-bottom: 1px solid rgba(233,168,76,0.35); margin-top: 0.5rem; }
+@media (max-width: 768px) { 
+.awards-divider {
+  position: relative; background: var(--ink);
+  margin: 2.5rem -4rem; padding: 3.5rem 4rem;
+  overflow: hidden; text-align: center;
+}
+.awards-divider-canvas {
+  position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none;
+}
+.awards-divider-content {
+  position: relative; z-index: 2;
+  background: var(--ink); display: inline-block;
+  padding: 1.5rem 3rem;
+}
+.awards-divider-eyebrow {
+  font-size: 0.68rem; font-weight: 500; letter-spacing: 0.25em;
+  text-transform: uppercase; color: var(--accent3);
+  margin-bottom: 0.75rem;
+  display: flex; align-items: center; justify-content: center; gap: 0.75rem;
+}
+.awards-divider-eyebrow::before, .awards-divider-eyebrow::after {
+  content: ''; display: block; width: 28px; height: 1px;
+  background: var(--accent3); opacity: 0.6;
+}
+.awards-divider-headline {
+  font-family: var(--serif);
+  font-size: clamp(1.6rem, 2.8vw, 2.4rem);
+  line-height: 1.2; color: white;
+}
+.awards-divider-headline em {
+  color: var(--accent3); font-style: italic;
+}
+@media (max-width: 768px) {
+  .awards-divider { margin: 2rem -1.5rem; padding: 3rem 1.5rem; }
+}
+
+.award-stats { grid-template-columns: repeat(3, 1fr); } }
+
+.tools-category-label { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent2); margin-bottom: 0.5rem; }
+
+/* ── SCROLLYTELLING BRIDGE ── */
+.bridge-wrapper { position: relative; height: 200vh; background: var(--ink); }
+.bridge-sticky { position: sticky; top: 0; height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 3rem 2rem; overflow: hidden; background: var(--ink); }
+.bridge-bg-word { position: absolute; font-family: var(--serif); font-size: clamp(8rem, 20vw, 18rem); font-weight: 700; color: rgba(255,255,255,0.03); letter-spacing: -0.04em; user-select: none; pointer-events: none; white-space: nowrap; }
+.bridge-cards { position: relative; z-index: 2; width: 100%; max-width: 700px; padding: 0 2rem; display: flex; flex-direction: column; align-items: center; }
+.bridge-card { width: 100%; text-align: center; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) translateY(0); opacity: 0; transition: opacity 0.6s ease, transform 0.6s ease; pointer-events: none; word-wrap: break-word; overflow-wrap: break-word; }
+.bridge-card.visible { opacity: 1; transform: translate(-50%, -50%) translateY(0); pointer-events: auto; }
+.bridge-card.exiting { opacity: 0; transform: translate(-50%, -50%) translateY(-40px); }
+.bridge-card-eyebrow { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.25em; text-transform: uppercase; color: var(--accent3); margin-bottom: 1.25rem; display: flex; align-items: center; justify-content: center; gap: 0.75rem; }
+.bridge-card-eyebrow::before, .bridge-card-eyebrow::after { content: ''; display: block; width: 32px; height: 1px; background: var(--accent3); opacity: 0.6; }
+.bridge-stat { font-family: var(--serif); font-size: clamp(5rem, 10vw, 9rem); font-weight: 700; line-height: 1; color: white; margin-bottom: 1rem; letter-spacing: -0.02em; }
+.bridge-stat span { color: var(--accent3); }
+.bridge-statement { font-family: var(--serif); font-size: clamp(2rem, 4.5vw, 3.5rem); font-style: italic; line-height: 1.25; color: white; margin-bottom: 1rem; }
+.bridge-statement em { color: var(--accent3); font-style: normal; }
+.bridge-sub { font-size: 1.05rem; font-weight: 300; color: rgba(255,255,255,0.5); line-height: 1.6; max-width: 480px; margin: 0 auto; }
+.bridge-progress { position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%); display: flex; gap: 0.5rem; z-index: 3; }
+.bridge-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.2); transition: background 0.3s, transform 0.3s; }
+.bridge-dot.active { background: var(--accent3); transform: scale(1.3); }
+.bridge-scroll-hint { position: absolute; bottom: 2.5rem; right: 2.5rem; font-size: 0.65rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.25); display: flex; align-items: center; gap: 0.5rem; }
+.bridge-scroll-hint svg { animation: bounceDown 1.5s ease-in-out infinite; }
+@keyframes bounceDown { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(4px); } }
+
+/* ── FOOTER ── */
+footer { background: var(--ink); color: white; text-align: center; padding: 3.5rem 2rem; }
+.footer-name { font-family: var(--serif); font-size: 2rem; font-style: italic; margin-bottom: 0.5rem; }
+.footer-links { display: flex; gap: 2rem; justify-content: center; margin: 1.5rem 0; }
+.footer-links a { font-size: 0.95rem; font-weight: 300; color: rgba(255,255,255,0.7); text-decoration: none; transition: color 0.2s; display: flex; flex-direction: column; align-items: center; gap: 0.2rem; }
+.footer-link-label { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.3); transition: color 0.2s; }
+.footer-links a:hover { color: var(--accent3); }
+.footer-links a:hover .footer-link-label { color: var(--accent3); }
+.footer-copy { font-size: 0.75rem; color: rgba(255,255,255,0.3); }
+
+/* ── MODAL ── */
+.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(26,26,26,0.65); z-index: 500; align-items: center; justify-content: center; padding: 1.5rem; }
+.modal-overlay.open { display: flex; }
+.modal-box { background: var(--light); border-radius: 6px; max-width: 480px; width: 100%; overflow: hidden; box-shadow: 0 24px 80px rgba(0,0,0,0.3); animation: modalIn 0.25s ease; }
+@keyframes modalIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+.modal-header { background: var(--ink); padding: 1.75rem 2rem 1.5rem; position: relative; }
+.modal-eyebrow { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent3); margin-bottom: 0.4rem; }
+.modal-title { font-family: var(--serif); font-size: 1.6rem; color: white; line-height: 1.2; }
+.modal-close { position: absolute; top: 1.25rem; right: 1.25rem; width: 32px; height: 32px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.2); background: none; color: rgba(255,255,255,0.6); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.15s; }
+.modal-close:hover { background: rgba(255,255,255,0.1); color: white; }
+.modal-body { padding: 2rem; display: flex; flex-direction: column; gap: 1.25rem; }
+.modal-contact-item { display: flex; align-items: flex-start; gap: 1rem; }
+.modal-contact-icon { width: 40px; height: 40px; border-radius: 50%; background: var(--cream); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--accent2); }
+.modal-contact-label { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.2rem; }
+.modal-contact-value { font-size: 0.95rem; font-weight: 400; color: var(--ink); text-decoration: none; }
+.modal-contact-value:hover { color: var(--accent2); }
+.modal-divider { height: 1px; background: var(--border); }
+
+/* ── SCROLL ANIMATIONS ── */
+.fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.fade-left { opacity: 0; transform: translateX(-36px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.fade-right { opacity: 0; transform: translateX(36px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.fade-up.visible, .fade-left.visible, .fade-right.visible { opacity: 1; transform: none; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  section { padding: 5rem 3rem; max-width: 100%; }
+  #who .inner { padding: 0 3rem; }
+  #approach .inner, #cases .inner, #resume .inner { padding: 0 3rem; }
+  .who-left { width: 280px; }
+  .who-photo-placeholder { min-height: 400px; }
+  .approach-cards { grid-template-columns: repeat(3, 1fr); } /* unchanged */
+  .cases-section-header { margin: 0 -3rem 3rem -3rem; padding: 3rem 3rem; }
+  #what-sticky { padding: 5rem 1.5rem 0; }
+}
+
+
+@media (max-width: 768px) {
+  .bridge-stat { font-size: 4.5rem; white-space: normal; }
+  .bridge-statement { font-size: 1.8rem; white-space: normal; line-height: 1.4; padding: 0 0.5rem; }
+  .bridge-sub { font-size: 0.85rem; padding: 0 0.5rem; }
+  .bridge-card-eyebrow { font-size: 0.62rem; margin-bottom: 0.75rem; }
+  .bridge-cards { padding: 0 1rem; max-width: 100%; }
+  .bridge-wrapper { height: 250vh; }
+  .bridge-sticky { padding: 0 1.5rem; }
+}
+@media (max-width: 768px) {
+  nav { padding: 1rem 1.5rem; }
+  .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+  .nav-drawer { display: block; }
+  .nav-drawer.open { background: var(--ink); border-color: rgba(255,255,255,0.08); }
+  #hero { padding: 7rem 1.5rem 5rem; }
+  .hero-name { font-size: clamp(3rem, 13vw, 5rem); }
+  .hero-tagline { font-size: 1rem; }
+  .btn-primary, .btn-outline { width: 100%; }
+  section { padding: 4rem 1.5rem; }
+  #who { padding: 4rem 0; }
+  #who .inner { padding: 0 1.5rem; }
+  .who-left { float: none; width: auto; margin: 0 0 2rem 0; }
+  .who-photo-card { width: fit-content; max-width: 100%; margin: 0 auto; }
+  .who-photo-placeholder { min-height: 320px; }
+  #what-outer { height: calc(100vh + 2300px); }
+  #what-sticky { padding: 5rem 1.5rem 0; }
+  .what-slide { min-width: 280px; max-width: 280px; }
+  .mini-bridge-wrapper { padding: 4rem 1.5rem; }
+  .mini-bridge-cards { grid-template-columns: 1fr; gap: 1.5rem; }
+  #approach { padding: 1.5rem 0 0.5rem; }
+  .approach-grid { margin-top: 0.75rem; }
+  .approach-text { margin-bottom: 1rem; }
+  .flip-card-front { min-height: 140px; }
+  .flip-card-back { justify-content: flex-start; }
+
+  #approach .inner { padding: 0 1.5rem; }
+  .approach-cards { grid-template-columns: repeat(2, 1fr); } /* unchanged */
+  #cases { padding: 4rem 0; }
+  #cases .inner { padding: 0 1.5rem; }
+  .cases-section-header { margin: 0 -1.5rem 2.5rem -1.5rem; padding: 2.5rem 1.5rem; }
+  .cases-section-title { font-size: clamp(2rem, 8vw, 3rem); }
+  .cs-title-image { grid-template-columns: 1fr; }
+  .cs-image-col .cs-screenshot { max-height: 220px; aspect-ratio: unset; }
+  .cs-body { grid-template-columns: 1fr; gap: 0; }
+  .cs-phase2 { grid-template-columns: 1fr; gap: 1rem; }
+  .cs-result-cards { grid-template-columns: 1fr; }
+  .cs-result-triggers { flex-wrap: wrap; gap: 1rem; justify-content: center; }
+  .cs-rt-connector { display: none; }
+  .cs-panel.active { flex-direction: column; gap: 1rem; }
+  .cs-carousel-card-inner { padding: 1.75rem 1.5rem; }
+  #resume { padding: 4rem 0; }
+  #resume .inner { padding: 0 1.5rem; }
+  footer { padding: 3rem 1.5rem; }
+  .footer-links { gap: 0.75rem; flex-wrap: wrap; justify-content: center; }
+  .resume-bridge-wrapper { padding: 3.5rem 1.5rem; }
+}
+
+@media (max-width: 480px) {
+  .approach-cards { grid-template-columns: 1fr; }
+  .flip-card-front { min-height: 120px; }
+  .flip-num { font-size: 1.8rem; }
+  .flip-title { font-size: 0.9rem; }
+}
+
+@media (max-width: 400px) {
+  #hero { padding: 6rem 1rem 4rem; }
+  section { padding: 3.5rem 1rem; }
+  #who .inner, #approach .inner, #cases .inner, #resume .inner { padding: 0 1rem; }
+  .cases-section-header { margin: 0 -1rem 2rem -1rem; padding: 2.5rem 1rem; }
+  .hero-name { font-size: clamp(2.5rem, 14vw, 4rem); }
+}
+
+</style>
+</head>
+<body>
+<!-- NAV -->
+<nav class="scrolled">
+  <a class="nav-logo" href="#hero">Kathleen Jacob</a>
+  <ul class="nav-links">
+    <li><a href="#who">About</a></li>
+    <li><a href="#what-outer">What I Offer</a></li>
+    <li><a href="#approach">Approach</a></li>
+    <li><a href="#cases">Case Study</a></li>
+  </ul>
+  <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE DRAWER -->
+<ul class="nav-drawer" id="nav-drawer" aria-hidden="true">
+  <li><a href="#who">About</a></li>
+  <li><a href="#what-outer">What I Offer</a></li>
+  <li><a href="#approach">Approach</a></li>
+  <li><a href="#cases">Case Study</a></li>
+</ul>
+
+<!-- HERO -->
+<section id="hero">
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero-left">
+    <p class="hero-eyebrow">Communications Expert</p>
+    <h1 class="hero-name">Kathleen<br><span>Jacob</span></h1>
+    <div class="hero-deco hero-deco--bottom">
+      <span class="hero-deco-line hero-deco-line--short"></span>
+      <span class="hero-deco-line"></span>
+      <span class="hero-deco-line hero-deco-line--short"></span>
+    </div>
+    <p class="hero-tagline">Web and communications leader with decades of experience spanning journalism, digital strategy, marketing, and public relations.</p>
+    <div class="hero-cta">
+      <a href="#resume" class="btn-primary">View Resume</a>
+    </div>
+  </div>
+</section>
+
+<!-- SCROLLYTELLING BRIDGE -->
+<div class="bridge-wrapper" id="bridge-wrapper">
+  <div class="bridge-sticky" id="bridge-sticky">
+    <div class="bridge-bg-word">Kathleen</div>
+    <div class="bridge-cards">
+      <div class="bridge-card visible" id="bridge-0">
+        <div class="bridge-card-eyebrow">By the numbers</div>
+        <div class="bridge-stat"><span>20+</span></div>
+        <p class="bridge-sub">Years building communications strategies, digital platforms, and earned media campaigns that move people to action.</p>
+      </div>
+      <div class="bridge-card" id="bridge-1">
+        <div class="bridge-card-eyebrow">The common thread</div>
+        <div class="bridge-statement">From breaking news to<br><em>breaking barriers</em> — the same instincts, applied.</div>
+        <p class="bridge-sub">Broadcast journalism. Public relations. Digital strategy. Every role built on the same foundation: clarity under pressure, and stories that land.</p>
+      </div>
+      <div class="bridge-card" id="bridge-2">
+        <div class="bridge-card-eyebrow">What you'll find here</div>
+        <div class="bridge-statement">The work. The approach.<br><em>The person behind it.</em></div>
+        <p class="bridge-sub">Explore how I work, the results I've driven, a deep-dive case study, and the full experience that got me here.</p>
+      </div>
+    </div>
+    <div class="bridge-progress">
+      <div class="bridge-dot active" id="bdot-0"></div>
+      <div class="bridge-dot" id="bdot-1"></div>
+      <div class="bridge-dot" id="bdot-2"></div>
+    </div>
+    <div class="bridge-scroll-hint">
+      Scroll
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+        <path d="M2 4L6 8L10 4" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<!-- WHO I AM -->
+<div id="who">
+  <div class="inner">
+    <div class="who-left fade-left">
+      <div class="who-photo-card">
+        <img src="https://i.imgur.com/q7fXrUh.png" alt="Kathleen Jacob" class="who-photo-img" />
+        <div class="who-info-card">
+          <div class="who-info-text">
+            <p class="who-info-title">Communications Manager</p>
+            <div class="who-info-divider"></div>
+            <p class="who-info-company">ICF Next</p>
+            <p class="who-info-location">Lillington, NC</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="who-right">
+      <h2 class="section-title fade-up">The person behind<br>the message.</h2>
+      <div class="who-value-block fade-up" style="animation-delay:0.1s">
+        <p class="who-value-eyebrow">What I do</p>
+        <p class="who-bio">I build the platforms people trust and the campaigns that move them to act. From disaster recovery navigation tools to statewide earned media strategies—I connect complex programs to the people who need them.</p>
+      </div>
+      <div class="who-value-block fade-up" style="animation-delay:0.25s">
+        <p class="who-value-eyebrow">How I work</p>
+        <p class="who-bio">I start with the audience, stay anchored in data, and finish with impact. Whether it's a Drupal-based platform serving thousands of disaster survivors or an internal communications overhaul that earns a state award—I bring the same clarity, creativity, and rigor to every challenge.</p>
+      </div>
+      <div class="who-value-block fade-up" style="animation-delay:0.4s">
+        <p class="who-value-eyebrow">The proof</p>
+        <p class="who-bio">Emmy Award–winning storyteller. 20+ industry honors including the Gold Anthem Award and Silver American Advertising Award. Hands-on expertise across video, photography, design, and digital publishing—I don't just lead the work. I make it.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WHAT YOU'LL GET -->
+<div id="what-outer">
+  <div id="what-sticky">
+    <div id="what-header" class="fade-up">
+      <p class="section-label">What You'll Get</p>
+      <h2 class="section-title">Core strengths and offerings</h2>
+      <p class="what-scroll-hint">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        Scroll to explore
+      </p>
+    </div>
+    <div id="what-track-wrapper">
+      <div id="what-track">
+
+        <div class="what-slide" data-index="0">
+          <div class="what-slide-num">01</div>
+          <h3 class="what-slide-title">Web Content Strategy</h3>
+          <p class="what-slide-text">Developing content strategies that connect complex programs to the audiences who need them. Clear, structured, and built around how people actually look for information.</p>
+        </div>
+
+        <div class="what-slide" data-index="1">
+          <div class="what-slide-num">02</div>
+          <h3 class="what-slide-title">UX and Information Architecture</h3>
+          <p class="what-slide-text">Designing user journeys and site structures that reduce overwhelm and guide people step by step, from high-level navigation down to page-level content decisions.</p>
+        </div>
+
+        <div class="what-slide" data-index="2">
+          <div class="what-slide-num">03</div>
+          <h3 class="what-slide-title">CMS and Digital Platforms</h3>
+          <p class="what-slide-text">Hands-on experience managing and building in Drupal, WordPress, and other platforms, including governance frameworks that keep content accurate and teams aligned.</p>
+        </div>
+
+        <div class="what-slide" data-index="3">
+          <div class="what-slide-num">04</div>
+          <h3 class="what-slide-title">Digital Accessibility</h3>
+          <p class="what-slide-text">Ensuring web content meets WCAG 2.1 Level AA standards — Not just as a compliance checkbox, but as a commitment to reaching every user regardless of ability or access.</p>
+        </div>
+
+        <div class="what-slide" data-index="4">
+          <div class="what-slide-num">05</div>
+          <h3 class="what-slide-title">Integrated Marketing Campaigns</h3>
+          <p class="what-slide-text">Building earned, owned, and paid media strategies that work together, with a focus on reaching historically underserved communities and driving measurable participation.</p>
+        </div>
+
+        <div class="what-slide" data-index="5">
+          <div class="what-slide-num">06</div>
+          <h3 class="what-slide-title">Brand and Organizational Storytelling</h3>
+          <p class="what-slide-text">Translating complex programs and policies into clear brand narratives, from identity development to rebranding initiatives that align agencies, partners, and the public.</p>
+        </div>
+
+        <div class="what-slide" data-index="6">
+          <div class="what-slide-num">07</div>
+          <h3 class="what-slide-title">Executive and Crisis Communications</h3>
+          <p class="what-slide-text">Strategic counsel for senior leadership on media engagement, public messaging, and crisis response, built on decades of managing high-visibility communications under pressure.</p>
+        </div>
+
+        <div class="what-slide" data-index="7">
+          <div class="what-slide-num">08</div>
+          <h3 class="what-slide-title">Multimedia Content Creation</h3>
+          <p class="what-slide-text">Emmy Award–winning storyteller with hands-on expertise across video, photography, graphic design, audio, and copywriting. I don't just direct the work. I make it.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="what-progress-bar">
+      <div class="what-progress-fill" id="what-progress-fill"></div>
+    </div>
+    <div class="what-counter"><span id="what-current">01</span> / <span id="what-total">08</span></div>
+
+    <div class="what-next-preview" id="what-next-preview">
+      <p class="section-label">My Toolkit</p>
+      <h2 class="section-title" style="margin-bottom:0;">Built to create. Wired to connect.</h2>
+      <p class="toolkit-hint" style="margin-top:0.5rem;">Click the circles below to explore each area of expertise.</p>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- SKILLS NETWORK -->
+<div id="skills-network-section">
+
+<!-- Mobile skill overlay -->
+<div id="skill-overlay">
+  <div id="skill-overlay-inner">
+    <button id="skill-overlay-close">&#x2715;</button>
+    <div id="skill-overlay-title"></div>
+    <ul id="skill-overlay-list"></ul>
+  </div>
+</div>
+
+<div id="wrap">
+  <div id="header-block" style="display:none;">
+    <div class="header-eyebrow">My Toolkit</div>
+    <div class="header-title">Built to create. Wired to connect.</div>
+    <div class="header-hint">Tap a node to explore &middot; Tap again to close</div>
+  </div>
+  <div id="svg-wrap">
+    <svg id="graph"></svg>
+    <svg id="measure-svg" style="position:absolute;top:-9999px;left:-9999px;visibility:hidden;width:600px;height:400px"></svg>
+    <div class="tooltip" id="tip"></div>
+  </div>
+</div>
+
+
+
+
+</div>
+
+<!-- TRANSITION BRIDGE: What → Approach -->
+<div class="mini-bridge-wrapper">
+  <div class="mini-bridge-bg">Innovation</div>
+  <div class="mini-bridge-cards">
+    <div class="mini-bridge-card fade-up">
+      <div class="mini-bridge-card-num">—</div>
+      <div class="mini-bridge-card-statement">Innovation isn't optional.<br><em>It's the path to transformation.</em></div>
+    </div>
+    <div class="mini-bridge-card fade-up">
+      <div class="mini-bridge-card-num">—</div>
+      <div class="mini-bridge-card-statement">Don't build a tool.<br><em>Build an experience.</em></div>
+    </div>
+    <div class="mini-bridge-card fade-up">
+      <div class="mini-bridge-card-num">—</div>
+      <div class="mini-bridge-card-statement">You can't create<br>for someone<br><em>you don't know.</em></div>
+    </div>
+  </div>
+  <div class="mini-bridge-footer fade-up">Here's how I put that into practice.</div>
+</div>
+
+<!-- MY APPROACH -->
+<div class="approach-sticky-wrapper">
+<div id="approach">
+  <div class="inner">
+    <p class="section-label">My Approach</p>
+    <h2 class="section-title">How I work and what I believe</h2>
+    <div class="approach-grid">
+      <div class="approach-text fade-up">
+        <p>My approach to work is grounded in a few core principles that guide how I solve problems, work with others, and build solutions that are effective, adaptable, and actually work for the people they're designed for.</p>
+      </div>
+      <div class="approach-cards fade-up">
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <span class="flip-num">1</span>
+              <h3 class="flip-title">User-Centered Approach</h3>
+              <p class="flip-hint">Hover to learn more</p>
+            </div>
+            <div class="flip-card-back">
+              <p class="flip-desc">I start with the user. I want to understand who they are, what they need, and what challenges they're facing so what we create is actually useful, easy to navigate, and makes sense to them.</p>
+            </div>
+          </div>
+        </div>
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <span class="flip-num">2</span>
+              <h3 class="flip-title">Technology-First Approach</h3>
+              <p class="flip-hint">Hover to learn more</p>
+            </div>
+            <div class="flip-card-back">
+              <p class="flip-desc">I see technology as a tool to solve problems and expand what's possible. I stay on top of how things like AI and search are evolving and think about how to use them in practical ways.</p>
+            </div>
+          </div>
+        </div>
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <span class="flip-num">3</span>
+              <h3 class="flip-title">Storytelling and Engagement</h3>
+              <p class="flip-hint">Hover to learn more</p>
+            </div>
+            <div class="flip-card-back">
+              <p class="flip-desc">I use storytelling and interactivity to make complex information easier to understand and more engaging — moving beyond static content to create experiences people connect with.</p>
+            </div>
+          </div>
+        </div>
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <span class="flip-num">4</span>
+              <h3 class="flip-title">Collaboration and Teamwork</h3>
+              <p class="flip-hint">Hover to learn more</p>
+            </div>
+            <div class="flip-card-back">
+              <p class="flip-desc">I do my best work when I'm collaborating. I work closely with teams and stakeholders to align on goals, share ideas, and build solutions that are stronger because they bring together different perspectives.</p>
+            </div>
+          </div>
+        </div>
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <span class="flip-num">5</span>
+              <h3 class="flip-title">Building Nimble, Responsive Systems</h3>
+              <p class="flip-hint">Hover to learn more</p>
+            </div>
+            <div class="flip-card-back">
+              <p class="flip-desc">I focus on building systems that can adapt and evolve. Needs change, technology changes, and the way people access information changes — so the work has to be flexible enough to keep up.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- SLASH BRIDGE: Approach → Cases -->
+<div class="slash-bridge" id="slash-bridge">
+  <canvas class="slash-bridge-canvas" id="slash-bridge-canvas"></canvas>
+
+</div>
+
+<!-- CASE STUDIES -->
+<div id="cases">
+  <div class="inner">
+    <div class="cases-section-header fade-up">
+      <div class="cases-section-header-inner">
+        <div class="cases-eyebrow">
+          <span class="cases-eyebrow-line"></span>
+          <span class="cases-eyebrow-text">Case Study</span>
+          <span class="cases-eyebrow-line"></span>
+        </div>
+        <h2 class="cases-section-title">Real Work.<br><em>Real Impact.</em></h2>
+        <p class="cases-intro">A detailed look at how I approach complex communication challenges, from strategy to execution and measurable impact.</p>
+      </div>
+    </div>
+
+    <div class="cs-title-image fade-up">
+      <div class="cs-title-col">
+        <h3 class="cs-project-title">A New Standard for Disaster Recovery Communications</h3>
+        <p class="cs-title-sub">A first-of-its-kind digital platform guiding disaster survivors through recovery — built under strict constraints, delivered on time.</p>
+      </div>
+      <div class="cs-image-col">
+        <div class="cs-screenshot" id="cs-screenshot-slot">
+          <img src="https://i.imgur.com/jGkC2Vk.png" alt="Case study screenshot" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-hero fade-up">
+      <h3 class="cs-hero-client">Colorado Governor's Office of Climate Preparedness and Disaster Recovery</h3>
+      <p class="cs-hero-sub">Digital platform strategy &middot; User experience &middot; Content design &middot; Deployment planning</p>
+    </div>
+
+    <div class="cs-body">
+      <div class="cs-block fade-left">
+        <div class="cs-block-header">
+          <div class="cs-block-icon">
+            <svg width="42" height="42" viewBox="0 0 42 42" fill="none">
+              <circle cx="21" cy="21" r="21" fill="#e85d4a"/>
+              <circle cx="21" cy="17" r="6" fill="white"/>
+              <path d="M9 34 Q21 26 33 34" fill="white"/>
+            </svg>
+          </div>
+          <div>
+            <p class="cs-block-label">The Need</p>
+            <h4 class="cs-block-title">People didn't know where to start</h4>
+          </div>
+        </div>
+        <p class="cs-block-text">Following the Marshall Wildfire, the Governor's Office recognized that feedback from survivors was consistent: the recovery process felt overwhelming. People didn't know where to start, what they qualified for, or how to move forward. What was needed wasn't just more information — it was a better way to deliver it. The goal became a centralized digital platform that could guide survivors through each stage of recovery and connect them to the right resources.</p>
+      </div>
+      <div class="cs-block fade-right">
+        <div class="cs-block-header">
+          <div class="cs-block-icon">
+            <svg width="42" height="42" viewBox="0 0 42 42" fill="none">
+              <circle cx="21" cy="21" r="21" fill="#e85d4a"/>
+              <polygon points="27,9 16,24 23,24 15,33 30,18 23,18" fill="white" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div>
+            <p class="cs-block-label">The Challenge</p>
+            <h4 class="cs-block-title">Real constraints, no easy answers</h4>
+          </div>
+        </div>
+        <p class="cs-block-text">The office didn't have access to their state-run website or the budget for a full build. As the communications expert brought in with web design experience, I was tasked with finding a solution that met strict constraints: no recurring subscription costs, a three-month development timeline, a tight budget, and the ability to customize for individual disasters as they occur.</p>
+      </div>
+    </div>
+
+    <div class="cs-section-divider fade-up">
+      <h3 class="cs-section-heading">The Solution</h3>
+    </div>
+
+    <div class="cs-carousel fade-up">
+      <div class="cs-carousel-track" id="cs-carousel-track">
+        <div class="cs-carousel-card active" data-index="0">
+          <div class="cs-carousel-card-inner cs-carousel-quote">
+            <p class="cs-cq-text">&nbsp;<span class="cs-cq-qmark">&ldquo;</span>&nbsp;AI can't replace human knowledge and expertise, but when used together, it allows for a customized user experience.<span class="cs-cq-qmark">&rdquo;</span></p>
+            <div class="cs-cq-divider"></div>
+            <p class="cs-cq-attr">On the solution to this project</p>
+          </div>
+        </div>
+        <div class="cs-carousel-card" data-index="1">
+          <div class="cs-carousel-card-inner">
+            <p class="cs-block-label">Finding a Path Forward</p>
+            <h4 class="cs-carousel-title">Using AI as a collaborative problem-solving tool</h4>
+            <p class="cs-block-text">Given the constraints, I took a different approach. By using AI as a collaborative problem-solving tool, I identified and combined a series of no-cost platforms into a fully integrated website — including a filterable resource database and the ability to customize for future disasters. What initially seemed to require a full digital build was reworked by using existing tools in new ways.</p>
+          </div>
+        </div>
+        <div class="cs-carousel-card" data-index="2">
+          <div class="cs-carousel-card-inner">
+            <p class="cs-block-label">Balancing AI with Expertise</p>
+            <h4 class="cs-carousel-title">AI supported the process — it didn't replace it</h4>
+            <p class="cs-block-text">The structure, content framework, and user pathways were built through stakeholder input, user research, and a deep understanding of disaster recovery programs. Once that foundation was established, AI was used to scale and customize content — including organizing large volumes of recovery resources, tagging them for filtering, and developing tailored content across six distinct user pathways.</p>
+          </div>
+        </div>
+      </div>
+      <div class="cs-carousel-controls">
+        <button class="cs-carousel-btn" id="cs-prev" aria-label="Previous">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M13 4L7 10L13 16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="cs-carousel-dots" id="cs-dots">
+          <span class="cs-dot active" data-dot="0"></span>
+          <span class="cs-dot" data-dot="1"></span>
+          <span class="cs-dot" data-dot="2"></span>
+        </div>
+        <button class="cs-carousel-btn" id="cs-next" aria-label="Next">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M7 4L13 10L7 16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="cs-approach fade-up">
+      <h4 class="cs-approach-title">My Approach</h4>
+      <div class="cs-approach-divider"></div>
+      <div class="cs-tabs">
+        <button class="cs-tab active" data-tab="tab1">User-First Mindset</button>
+        <button class="cs-tab" data-tab="tab2">Research and Stakeholders</button>
+        <button class="cs-tab" data-tab="tab3">User Pathways</button>
+        <button class="cs-tab" data-tab="tab4">Content and Navigation</button>
+        <button class="cs-tab" data-tab="tab5">Deployment Plan</button>
+      </div>
+      <div class="cs-panel active" id="tab1">
+        <p class="cs-panel-text">
+          <span class="cs-panel-header">
+            <svg width="22" height="22" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="10" r="5"/><path d="M6 28c0-5.523 4.477-10 10-10s10 4.477 10 10"/></svg>
+            User-First Mindset
+          </span>
+          I approach everything with the user in mind — making sure what we create meets both their needs and the organization's goals. When you're working with storm survivors, that matters even more. Access to technology may be limited, and there can be education, language, or accessibility barriers. The experience also needed to be trauma-informed, which shows up in how information is written, structured, and delivered so it feels supportive instead of overwhelming.
+        </p>
+      </div>
+      <div class="cs-panel" id="tab2">
+        <p class="cs-panel-text">
+          <span class="cs-panel-header">
+            <svg width="22" height="22" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="16" r="11"/><path d="M16 5v4M16 23v4M5 16h4M23 16h4"/><circle cx="16" cy="16" r="4"/></svg>
+            Research and Stakeholders
+          </span>
+          I led stakeholder working sessions to understand user needs, barriers to accessing assistance, how people were finding information, and how those needs shift depending on the type of disaster. Everything pointed to the same issue: people weren't just looking for information — they were trying to figure out what to do next, how to do it, what they qualified for, and how not to accidentally disqualify themselves from aid. There was too much information and no clear starting point.
+        </p>
+      </div>
+      <div class="cs-panel" id="tab3">
+        <p class="cs-panel-text">
+          <span class="cs-panel-header">
+            <svg width="22" height="22" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h4v4H6zM14 8h12M14 14h12M6 18h4v4H6zM14 18h12M14 24h12"/></svg>
+            User Pathways
+          </span>
+          By defining user types — homeowners, renters, and landlords — I built pathways that guide people step-by-step based on their specific situation. These pathways walk users through each phase of recovery: early, ongoing, and long-term, clearly outlining what needs to happen at each stage. We also made sure the information accounted for real-life factors like caring for elderly family members, individuals with disabilities, or pets, so people can see themselves in the experience and understand what applies to them.
+        </p>
+      </div>
+      <div class="cs-panel" id="tab4">
+        <p class="cs-panel-text">
+          <span class="cs-panel-header">
+            <svg width="22" height="22" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="24" height="24" rx="3"/><path d="M4 10h24M10 4v6"/><path d="M10 17h12M10 22h8"/></svg>
+            Content and Navigation
+          </span>
+          Content and navigation were designed to reduce overwhelm and make complex processes feel more manageable. Instead of giving people everything at once, the experience surfaces what they need at the right time. People could navigate by user type, phase of recovery, or resource category. We included "need to know" sections, key takeaways, and printable checklists — so users could keep track of what they needed to do even without consistent access to the platform.
+        </p>
+      </div>
+      <div class="cs-panel" id="tab5">
+        <p class="cs-panel-text">
+          <span class="cs-panel-header">
+            <svg width="22" height="22" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 24l7-7 5 5 8-10 4 3"/><path d="M28 8v6h-6"/><path d="M28 14a12 12 0 11-3.5-8.5"/></svg>
+            Deployment Plan
+          </span>
+          In addition to building the platform, I developed a communications plan for how the website would be deployed and promoted before, during, and after a disaster. This included building awareness ahead of disasters, coordinating launch efforts during active events, and sustaining outreach throughout the recovery process — making sure local governments, community organizations, and residents know where to find the tool and how to use it at each stage.
+        </p>
+      </div>
+    </div>
+
+    <div class="cs-phase2 fade-up">
+      <div class="cs-phase2-badge">Phase II — In Development</div>
+      <div>
+        <h4 class="cs-phase2-title">Expanding the experience with a custom AI caseworker</h4>
+        <p class="cs-phase2-text">Phase II will add a custom AI tool designed to function as a digital caseworker — allowing users to ask case-specific questions and receive tailored guidance based on their individual situation. It will also incorporate additional multimedia elements including video, graphics, and visual tools to communicate complex information in more accessible and engaging ways.</p>
+      </div>
+    </div>
+
+    <div class="cs-section-divider fade-up">
+      <h3 class="cs-section-heading">The Results</h3>
+    </div>
+
+    <div class="cs-screenshot fade-up" style="margin-bottom:2rem;">
+      <img src="https://i.imgur.com/F9IEi2h.png" alt="Colorado Disaster Recovery Platform" style="width:100%;height:100%;object-fit:cover;display:block;" />
+    </div>
+
+    <div class="cs-carousel-card-inner cs-carousel-quote fade-up" style="margin-bottom:2rem;">
+      <p class="cs-cq-text">State partners described the tool and level of information provided as <span class="cs-cq-qmark">&ldquo;</span>empowering<span class="cs-cq-qmark">&rdquo;</span> — giving people the clarity and confidence to take the next step in their recovery journey.</p>
+      <div class="cs-cq-divider"></div>
+      <p class="cs-cq-attr">State partners on the completed tool</p>
+    </div>
+
+    <div class="cs-results-interactive">
+      <div class="cs-result-triggers">
+        <button class="cs-result-trigger" data-result="0" style="--delay:0s">
+          <div class="cs-rt-circle">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+            </svg>
+          </div>
+          <span class="cs-rt-label">First of its Kind</span>
+          <span class="cs-rt-hint">Click to expand</span>
+        </button>
+        <div class="cs-rt-connector"></div>
+        <button class="cs-result-trigger" data-result="1" style="--delay:0.4s">
+          <div class="cs-rt-circle">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="3" width="20" height="14" rx="2"/>
+              <path d="M8 21h8M12 17v4"/>
+            </svg>
+          </div>
+          <span class="cs-rt-label">Reusable Framework</span>
+          <span class="cs-rt-hint">Click to expand</span>
+        </button>
+        <div class="cs-rt-connector"></div>
+        <button class="cs-result-trigger" data-result="2" style="--delay:0.8s">
+          <div class="cs-rt-circle">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+          <span class="cs-rt-label">Sustainable Model</span>
+          <span class="cs-rt-hint">Click to expand</span>
+        </button>
+      </div>
+      <div class="cs-result-cards">
+        <div class="cs-result-reveal" id="result-0">
+          <div class="cs-result-card">
+            <p class="cs-result-text">Developed a first-of-its-kind digital storm recovery navigation tool that provides customized, user-specific guidance to disaster survivors.</p>
+          </div>
+        </div>
+        <div class="cs-result-reveal" id="result-1">
+          <div class="cs-result-card">
+            <p class="cs-result-text">Created a reusable framework that other disaster recovery agencies can adopt — either within existing state websites or adapted on alternative platforms.</p>
+          </div>
+        </div>
+        <div class="cs-result-reveal" id="result-2">
+          <div class="cs-result-card">
+            <p class="cs-result-text">Designed a sustainable, adaptable model that positions Colorado to better support communities in future disasters at scale.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- TRANSITION BRIDGE: Cases → Resume -->
+<div class="resume-bridge-wrapper">
+  <canvas class="resume-bridge-canvas" id="resume-bridge-canvas"></canvas>
+  <div class="resume-bridge-content fade-up">
+    <div class="resume-bridge-eyebrow">The credentials</div>
+    <div class="resume-bridge-statement">Every role. Every award.<br><em>Every hard-won lesson.</em></div>
+    <p class="resume-bridge-sub">20 years. Multiple industries. One guiding principle: Create work that moves people.</p>
+  </div>
+</div>
+
+<!-- RESUME -->
+<div id="resume">
+  <div class="inner">
+    <h2 class="section-title">Experience and Background</h2>
+    <div class="resume-grid">
+
+      <div>
+        <p class="section-label">Experience</p>
+
+        <div class="resume-job fade-up">
+          <button class="job-trigger" aria-expanded="false">
+            <div class="job-trigger-left">
+              <div class="job-trigger-top">
+                <span class="job-title">Communications Manager</span>
+                <span class="job-dates">2020 – Present</span>
+              </div>
+              <div class="job-company">ICF Next</div>
+            </div>
+            <div class="job-chevron" aria-hidden="true">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                <path d="M2 4L6 8L10 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </button>
+          <div class="job-body" role="region">
+            <div class="job-body-inner">
+              <p class="job-summary">Leads strategic communications and marketing initiatives for multiple public-sector clients at a global marketing and communications firm. Oversees a team of creative professionals developing campaigns, digital platforms, and multimedia storytelling across housing, disaster recovery, homelessness services, and environmental programs.</p>
+              <ul class="job-bullets">
+                <li>Lead development and ongoing management of user-centered websites and digital platforms for state and local government programs, ensuring content is clear, accessible, and aligned with user needs.</li>
+                <li>Integrate innovative software, AI, and interactive tools into web and digital platforms to drive user engagement and make complex information more accessible.</li>
+                <li>Develop information architecture, user journeys, and content frameworks to guide website structure and improve overall user experience.</li>
+                <li>Ensure all web content meets federal and state accessibility standards, including WCAG 2.1 Level AA compliance.</li>
+                <li>Translate complex public programs into clear communications frameworks that guide public understanding and participation.</li>
+                <li>Develop and implement strategic communications plans integrating earned, owned, and paid media, prioritizing accessible outreach to historically underserved communities.</li>
+                <li>Oversee multimedia communications including video series, social campaigns, and educational publications, leading cross-disciplinary teams of designers, developers, writers, and media specialists.</li>
+                <li>Provide strategic counsel to senior leadership on media engagement, public messaging, and communications planning during high-visibility initiatives.</li>
+                <li>Lead brand development and rebranding initiatives that clarify program identity and ensure consistent communication across agencies and partner organizations.</li>
+              </ul>
+              <div class="job-highlights-label">Project Highlights</div>
+              <div class="job-highlight">
+                <div class="job-highlight-title">North Carolina Office of Recovery and Resiliency (NCORR) <span class="job-highlight-dates">2020 – Present</span></div>
+                <p class="job-highlight-text">Oversaw a digital team redesigning NC's disaster recovery website on Drupal. Facilitated user research and developed a user-centered information architecture, introduced visual progress metrics and storytelling, and ensured full digital accessibility compliance. Partnered with agency leadership to translate complex housing recovery policies into clear public messaging and provided executive communications support including crisis communications, media training, and strategic messaging for press events and legislative hearings.</p>
+              </div>
+              <div class="job-highlight">
+                <div class="job-highlight-title">New Jersey Department of Community Affairs <span class="job-highlight-dates">2022 – Present</span></div>
+                <p class="job-highlight-text">Supported communications and outreach for multiple disaster recovery and mitigation programs. Developed integrated communications strategies to increase program awareness and participation. Used geographic, income, language, and demographic data to inform outreach strategies and developed real-time data dashboards to track campaign performance.</p>
+              </div>
+              <div class="job-highlight">
+                <div class="job-highlight-title">Colorado Governor's Office of Climate Preparedness and Disaster Recovery <span class="job-highlight-dates">2025 – 2026</span></div>
+                <p class="job-highlight-text">Led development of a first-of-its-kind digital platform guiding disaster survivors through recovery via customized, user-specific pathways. Led stakeholder working sessions, built structured pathways for homeowners, renters, and landlords, and designed multi-path navigation with "need to know" summaries and printable checklists to support real-world use.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="resume-job fade-up">
+          <button class="job-trigger" aria-expanded="false">
+            <div class="job-trigger-left">
+              <div class="job-trigger-top">
+                <span class="job-title">Public Relations Specialist</span>
+                <span class="job-dates">2015 – 2020</span>
+              </div>
+              <div class="job-company">North Carolina Education Lottery</div>
+            </div>
+            <div class="job-chevron" aria-hidden="true">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                <path d="M2 4L6 8L10 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </button>
+          <div class="job-body" role="region">
+            <div class="job-body-inner">
+              <p class="job-summary">Led statewide communications initiatives to strengthen brand visibility, expand earned media coverage, and deepen public engagement. Partnered with executive leadership to develop strategic storytelling campaigns, manage media relations, and coordinate high-profile brand partnerships and public events.</p>
+              <ul class="job-bullets">
+                <li>Developed and maintained relationships with statewide and national media outlets, pitching story opportunities and coordinating interviews to secure earned media coverage.</li>
+                <li>Served as the organization's on-camera spokesperson and statewide media contact across broadcast, digital, and print platforms.</li>
+                <li>Produced and coordinated high-profile media events and brand activations with partners including the Carolina Panthers, NASCAR, and the Carolina Hurricanes.</li>
+                <li>Provided communications counsel to executive leadership, shaping messaging for public announcements, promotional campaigns, and major media engagements.</li>
+              </ul>
+              <div class="job-highlights-label">Project Highlights</div>
+              <div class="job-highlight">
+                <div class="job-highlight-title">Winner Awareness Campaign</div>
+                <p class="job-highlight-text">Modernized the Lottery's winner communications strategy by shifting from transactional announcements to narrative-driven storytelling. Implemented a comprehensive digital media pitching strategy that resulted in a 300% increase in earned media coverage and consistent placement in national outlets.</p>
+              </div>
+              <div class="job-highlight">
+                <div class="job-highlight-title">Internal Communications Revamp</div>
+                <p class="job-highlight-text">Led an overhaul of internal communications across headquarters and six regional offices, improving information flow, employee engagement, and brand alignment. Developed internal storytelling initiatives that contributed to earning a state award for Best Internal Communications.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="resume-job fade-up">
+          <button class="job-trigger" aria-expanded="false">
+            <div class="job-trigger-left">
+              <div class="job-trigger-top">
+                <span class="job-title">Executive News Producer and Reporter</span>
+                <span class="job-dates">2007 – 2015</span>
+              </div>
+              <div class="job-company">WNCN Raleigh · WGGB Springfield · KTVB Boise · KBYU Provo</div>
+            </div>
+            <div class="job-chevron" aria-hidden="true">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                <path d="M2 4L6 8L10 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </button>
+          <div class="job-body" role="region">
+            <div class="job-body-inner">
+              <p class="job-summary">Built a foundation in strategic storytelling and leadership through progressive broadcast journalism roles, managing fast-paced newsroom teams responsible for daily live programming and high-impact special coverage across multiple major markets.</p>
+              <ul class="job-bullets">
+                <li>Led newsroom teams responsible for producing daily live broadcasts and special programming in fast-paced, deadline-driven environments.</li>
+                <li>Directed cross-functional creative teams through complex live productions, balancing editorial quality, audience expectations, and operational constraints.</li>
+                <li>Pitched and produced special programming including town halls and investigative features while expanding digital and social integration to increase audience reach.</li>
+                <li>Partnered with station leadership on content strategy, resource allocation, and production planning for major news coverage and special broadcasts.</li>
+                <li>Contributed to newsroom teams earning multiple industry honors, including Emmy Awards, Edward R. Murrow Awards, and Station of the Year recognitions.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="resume-sidebar">
+        <div style="margin-bottom: 3rem;">
+          <p class="section-label">Education</p>
+          <div class="education-item fade-up">
+            <div class="edu-degree">Executive Certificates — Digital Marketing Strategy, Data Driven Marketing, Marketing Strategy and Integrated Marketing</div>
+            <div class="edu-school">Cornell University SC Johnson College of Business</div>
+            <div class="edu-year">2019</div>
+          </div>
+          <div class="education-item fade-up">
+            <div class="edu-degree">Reputation Management Certificate</div>
+            <div class="edu-school">Public Relations Society of America</div>
+            <div class="edu-year">2019</div>
+          </div>
+          <div class="education-item fade-up">
+            <div class="edu-degree">Crisis Communications Certificate</div>
+            <div class="edu-school">Public Relations Society of America</div>
+            <div class="edu-year">2018</div>
+          </div>
+          <div class="education-item fade-up">
+            <div class="edu-degree">B.A. in Broadcast Journalism</div>
+            <div class="edu-school">Brigham Young University</div>
+            <div class="edu-year">2007</div>
+          </div>
+        </div>
+
+        <div style="margin-bottom: 3rem;">
+          <p class="section-label">Tools and Software</p>
+          <div style="margin-bottom: 1rem;">
+            <div class="tools-category-label">Creative and Design</div>
+            <div class="skills-cloud">
+              <span class="skill-tag">Adobe Creative Suite</span>
+              <span class="skill-tag">Adobe Express</span>
+              <span class="skill-tag">Canva</span>
+              <span class="skill-tag">Visme</span>
+              <span class="skill-tag">VideoScribe</span>
+            </div>
+          </div>
+          <div style="margin-bottom: 1rem;">
+            <div class="tools-category-label">Media and Social Management</div>
+            <div class="skills-cloud">
+              <span class="skill-tag">Meltwater</span>
+              <span class="skill-tag">Critical Mention</span>
+              <span class="skill-tag">Hootsuite</span>
+            </div>
+          </div>
+          <div style="margin-bottom: 1rem;">
+            <div class="tools-category-label">Email Marketing</div>
+            <div class="skills-cloud">
+              <span class="skill-tag">Mailchimp</span>
+              <span class="skill-tag">Constant Contact</span>
+            </div>
+          </div>
+          <div style="margin-bottom: 1rem;">
+            <div class="tools-category-label">Productivity and Collaboration</div>
+            <div class="skills-cloud">
+              <span class="skill-tag">Microsoft Word</span>
+              <span class="skill-tag">Excel</span>
+              <span class="skill-tag">PowerPoint</span>
+              <span class="skill-tag">Outlook</span>
+              <span class="skill-tag">SharePoint</span>
+            </div>
+          </div>
+          <div style="margin-bottom: 1rem;">
+            <div class="tools-category-label">Web and CMS</div>
+            <div class="skills-cloud">
+              <span class="skill-tag">Drupal</span>
+              <span class="skill-tag">WordPress</span>
+              <span class="skill-tag">Google Sites</span>
+              <span class="skill-tag">Wix</span>
+              <span class="skill-tag">Jira</span>
+            </div>
+          </div>
+          <div>
+            <div class="tools-category-label">Analytics and Visualization</div>
+            <div class="skills-cloud">
+              <span class="skill-tag">Google Analytics</span>
+              <span class="skill-tag">Google Looker Studio</span>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <!-- AWARDS DIVIDER -->
+          <div class="awards-divider">
+            <canvas class="awards-divider-canvas" id="awards-divider-canvas"></canvas>
+            <div class="awards-divider-content">
+              <div class="awards-divider-eyebrow">Recognition</div>
+              <div class="awards-divider-headline">Award-winning work.<br><em>Across every industry.</em></div>
+            </div>
+          </div>
+
+
+          <!-- Award stats counters -->
+          <div class="award-stats">
+            <div class="award-stat fade-up">
+              <div class="award-stat-num" data-target="20">0</div>
+              <div class="award-stat-label">Industry honors</div>
+            </div>
+            <div class="award-stat fade-up">
+              <div class="award-stat-num" data-target="6">0</div>
+              <div class="award-stat-label">Emmy nominations + winner</div>
+            </div>
+            <div class="award-stat fade-up">
+              <div class="award-stat-num" data-target="2">0</div>
+              <div class="award-stat-label">Decades of award winning work</div>
+            </div>
+          </div>
+
+          <!-- Award cards -->
+          <div class="award-cards">
+            <div class="award-card fade-up">
+              <div class="award-card-icon">&#9733;</div>
+              <div class="award-card-title">Gold Anthem Award</div>
+              <div class="award-card-sub">Humanitarian Action and Services</div>
+              <div class="award-card-detail">Addressing Homelessness in Oregon</div>
+              <div class="award-card-year">2025</div>
+            </div>
+            <div class="award-card fade-up">
+              <div class="award-card-icon">&#9733;</div>
+              <div class="award-card-title">Silver American Advertising Award</div>
+              <div class="award-card-sub">Public Service Campaign</div>
+              <div class="award-card-detail">Washington D.C.</div>
+              <div class="award-card-year">2025</div>
+            </div>
+            <div class="award-card fade-up">
+              <div class="award-card-icon">&#9733;</div>
+              <div class="award-card-title">Best Internal Communications</div>
+              <div class="award-card-sub">NC Association of Government Information Officers</div>
+              <div class="award-card-detail"></div>
+              <div class="award-card-year">2018</div>
+            </div>
+            <div class="award-card award-card--emmy fade-up">
+              <div class="award-card-icon">&#9733;</div>
+              <div class="award-card-title">Emmy Award</div>
+              <div class="award-card-sub">Best Newscast · + 6 nominations</div>
+              <div class="award-card-detail">Multiple regional associations</div>
+              <div class="award-card-year">2010–2016</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">Kathleen Jacob</div>
+  <div class="footer-links">
+    <a href="mailto:kathleenjacob26@gmail.com">
+      <span class="footer-link-label">Email</span>
+      kathleenjacob26@gmail.com
+    </a>
+    <a href="tel:2088500664">
+      <span class="footer-link-label">Phone</span>
+      208-850-0664
+    </a>
+    <a href="https://www.linkedin.com/in/kathleen-jacob-3ba46615/" target="_blank" rel="noopener">
+      <span class="footer-link-label">LinkedIn</span>
+      linkedin.com/in/kathleen-jacob
+    </a>
+  </div>
+  <div class="footer-copy"></div>
+</footer>
+
+
+
+
+
+<!-- CONTACT MODAL -->
+<div class="modal-overlay" id="contact-modal">
+  <div class="modal-box">
+    <div class="modal-header">
+      <p class="modal-eyebrow">Get in touch</p>
+      <h2 class="modal-title">Let's work together.</h2>
+      <button class="modal-close" id="modal-close" aria-label="Close">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M1 1l12 12M13 1L1 13" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-contact-item">
+        <div class="modal-contact-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+            <path d="M22 6l-10 7L2 6"/>
+          </svg>
+        </div>
+        <div>
+          <p class="modal-contact-label">Email</p>
+          <a href="mailto:kathleenjacob26@gmail.com" class="modal-contact-value">kathleenjacob26@gmail.com</a>
+        </div>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-contact-item">
+        <div class="modal-contact-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.68A2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/>
+          </svg>
+        </div>
+        <div>
+          <p class="modal-contact-label">Phone</p>
+          <a href="tel:2088500664" class="modal-contact-value">208-850-0664</a>
+        </div>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-contact-item">
+        <div class="modal-contact-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+        </div>
+        <div>
+          <p class="modal-contact-label">Address</p>
+          <p class="modal-contact-value">56 Springfield Ln<br>Lillington, NC</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+<script>
+
+const CATS = [
+  {id:"content", name:"Content Creation",    color:"#e85d4a", ring:'outer', skills:["Plain language","Web copy","Blogs & newsletters","Media releases","Speeches & scripts","Marketing content","Program guides","Email comms","Social media","UX writing","Technical translation"]},
+  {id:"web",     name:"Web & Digital",        color:"#3b82b0", ring:'outer', skills:["Website strategy","Content management","Drupal / WordPress","Information architecture","UX design","User journey mapping","Digital accessibility","SEO"]},
+  {id:"design",  name:"Visual Design",        color:"#5bab72", ring:'outer', skills:["Web graphics","Infographics","Illustrations","Marketing materials","Social media graphics","Fact sheets","Newsletters & brochures","Presentation design","Data visualization"]},
+  {id:"av",      name:"Visual & Audio",       color:"#3dbdb3", ring:'outer', skills:["Videography","Video editing","Motion graphics","Storyboarding","Script development","Voice over","Podcast production","Photography","Multimedia production"]},
+  {id:"media",   name:"Media Relations",      color:"#9b6bbf", ring:'outer', skills:["Media strategy","Media outreach","Media training","Interview prep","Message development","Press events","Crisis media response"]},
+  {id:"mktg",    name:"Marketing & Outreach", color:"#e07b39", ring:'outer', skills:["Brand development","Visual identity","Positioning & messaging","Market research","Audience segmentation","Integrated marketing","Campaign development","Community engagement","Email marketing","Survey development"]},
+  {id:"crisis",  name:"Crisis Comms",         color:"#c0392b", ring:'outer', skills:["Crisis strategy","Rapid response","Risk communication","Stakeholder coordination","Reputation management"]},
+  {id:"lead",    name:"Leadership",           color:"#3a8a52", ring:'outer', skills:["Team leadership","Stakeholder management","Strategic planning","Project management","Training & capacity building","Process development"]},
+  {id:"story",   name:"Storytelling",         color:"#d4942a", ring:'inner', skills:["Narrative development","Translating complexity","Program storytelling","Multimedia storytelling","Data-driven storytelling","Audience messaging","Interviewing"]},
+  {id:"data",    name:"Data & Insights",      color:"#4a90d9", ring:'inner', skills:["Web analytics","Data-driven strategy","Demographic analysis","Survey design","Dashboard development","Data visualization","Actionable insights"]},
+  {id:"exec",    name:"Executive Comms",      color:"#b07d3a", ring:'inner', skills:["Executive messaging","Speechwriting","Talking points","Legislative materials","Media preparation","Strategic advisory"]},
+  {id:"ai",      name:"AI",                   color:"#7c52a8", ring:'inner', skills:["AI problem-solving","Brainstorming & ideation","Content generation","Personalization","Data organization","Coding support","Workflow optimization","Platform extension"]},
+];
+
+// All sizing scales with shortest viewport dimension
+function getScale(){const el=document.getElementById("svg-wrap");const w=el?el.clientWidth:window.innerWidth;return Math.max(0.38,Math.min(1,w/700));}
+function CAT_R(){const s=getScale();return s<0.5?Math.round(36*s):Math.round(44*s);}
+function SKILL_R(){return Math.round(8*getScale());}
+function MARGIN_TOP(){return Math.max(80,Math.round(100*getScale()));}
+function MARGIN_SIDE(){return Math.round(Math.min(window.innerWidth*0.15,140));}
+function MARGIN_BOTTOM(){return Math.max(40,Math.round(55*getScale()));}
+
+let activeId=null, skillSim=null, basePositions={};
+
+function svgSize(){const el=document.getElementById('svg-wrap');return{W:el.clientWidth,H:el.clientHeight};}
+function trimLine(x1,y1,x2,y2,r1,r2){const dx=x2-x1,dy=y2-y1,len=Math.sqrt(dx*dx+dy*dy)||1,ux=dx/len,uy=dy/len;return{x1:x1+ux*r1,y1:y1+uy*r1,x2:x2-ux*r2,y2:y2-uy*r2};}
+
+function computeLayout(){
+  const {W,H}=svgSize();
+  const cx=W/2, cy=H/2;
+  const ringR=Math.min(W,H)*0.32;
+  const innerR=ringR*0.36;
+  const outer=CATS.filter(c=>c.ring==='outer'), inner=CATS.filter(c=>c.ring==='inner');
+  const pos={};
+  outer.forEach((cat,i)=>{const a=(2*Math.PI*i/outer.length)-Math.PI/2;pos[cat.id]={x:cx+ringR*Math.cos(a),y:cy+ringR*Math.sin(a)};});
+  const innerAngles=[-Math.PI/2,0,Math.PI/2,Math.PI];
+  inner.forEach((cat,i)=>{pos[cat.id]={x:cx+innerR*Math.cos(innerAngles[i]),y:cy+innerR*Math.sin(innerAngles[i])};});
+  return{pos,cx,cy,ringR,innerR};
+}
+
+function computeShifted(id,base){
+  const {W,H}=svgSize();
+  const cx=W/2,cy=H/2, origin=base[id];
+  const angle=Math.atan2(origin.y-cy,origin.x-cx);
+  const push=Math.min(W,H)*0.12;
+  const shifted={};
+  CATS.forEach(cat=>{
+    if(cat.id===id){shifted[cat.id]={x:origin.x+Math.cos(angle)*push,y:origin.y+Math.sin(angle)*push};}
+    else{const p=base[cat.id],dx=p.x-origin.x,dy=p.y-origin.y,dist=Math.sqrt(dx*dx+dy*dy)||1;shifted[cat.id]={x:p.x+(dx/dist)*38,y:p.y+(dy/dist)*38};}
+  });
+  return shifted;
+}
+
+// SVG layers
+const svg=d3.select('#graph');
+const bgHit=svg.append('rect').attr('id','bgHit').attr('width','100%').attr('height','100%').attr('fill','transparent').style('cursor','default');
+const lineLayer=svg.append('g');
+const catLayer=svg.append('g');
+const skillLineLayer=svg.append('g');
+const skillNodeLayer=svg.append('g');
+
+bgHit.on('click',()=>{if(activeId)deselect();});
+bgHit.on('touchend',function(e){e.preventDefault();if(activeId)deselect();});
+
+// Backbone lines
+let lineSel;
+function buildLineData(pos){
+  const outer=CATS.filter(c=>c.ring==='outer'),inner=CATS.filter(c=>c.ring==='inner'),data=[];
+  const cr=CAT_R();
+  outer.forEach((cat,i)=>{const next=outer[(i+1)%outer.length];const t=trimLine(pos[cat.id].x,pos[cat.id].y,pos[next.id].x,pos[next.id].y,cr,cr);data.push({id:`o${i}`,...t,baseOp:0.7,w:1.5});});
+  outer.forEach(o=>inner.forEach(inn=>{const t=trimLine(pos[o.id].x,pos[o.id].y,pos[inn.id].x,pos[inn.id].y,cr,cr);data.push({id:`oi_${o.id}_${inn.id}`,...t,baseOp:0.4,w:1});}));
+  inner.forEach((cat,i)=>{for(let j=i+1;j<inner.length;j++){const t=trimLine(pos[cat.id].x,pos[cat.id].y,pos[inner[j].id].x,pos[inner[j].id].y,cr,cr);data.push({id:`ii${i}${j}`,...t,baseOp:0.6,w:1.2});}});
+  return data;
+}
+function buildLines(pos){lineLayer.selectAll('*').remove();lineSel=lineLayer.selectAll('line').data(buildLineData(pos),d=>d.id).enter().append('line').attr('x1',d=>d.x1).attr('y1',d=>d.y1).attr('x2',d=>d.x2).attr('y2',d=>d.y2).attr('stroke','#6e6862').attr('stroke-width',d=>d.w).attr('stroke-opacity',d=>d.baseOp);}
+function transitionLines(pos,watermark,dur){lineSel=lineLayer.selectAll('line').data(buildLineData(pos),d=>d.id);lineSel.transition().duration(dur).ease(d3.easeCubicOut).attr('x1',d=>d.x1).attr('y1',d=>d.y1).attr('x2',d=>d.x2).attr('y2',d=>d.y2).attr('stroke-opacity',d=>watermark?0.04:d.baseOp);}
+
+// Cat nodes
+function buildCatNodes(pos){
+  catLayer.selectAll('.cat-node').remove();
+  const cr=CAT_R();
+  catLayer.selectAll('.cat-node').data(CATS,d=>d.id).enter().append('g')
+    .attr('class','cat-node').attr('cursor','pointer')
+    .attr('transform',d=>`translate(${pos[d.id].x},${pos[d.id].y})`)
+    .call(sel=>{
+      sel.append('circle').attr('class','cat-circle').attr('r',cr).attr('fill',d=>d.color).attr('fill-opacity',1).attr('stroke','none');
+      sel.each(function(d){
+        const g=d3.select(this),words=d.name.split(' ');
+        let best=words.length,bMax=Infinity;
+        for(let s=1;s<words.length;s++){const mx=Math.max(words.slice(0,s).join(' ').length,words.slice(s).join(' ').length);if(mx<bMax){bMax=mx;best=s;}}
+        const l1=words.slice(0,best).join(' '),l2=words.slice(best).join(' '),lh=Math.round(13*getScale());
+        const fs=Math.max(9,Math.round(11*getScale()));
+        const addT=(text,dy)=>g.append('text').attr('class','cat-text').attr('text-anchor','middle').attr('dominant-baseline','central').attr('dy',dy).attr('font-family','"DM Sans",sans-serif').attr('font-size',fs).attr('font-weight',500).attr('fill','#ffffff').attr('fill-opacity',1).attr('pointer-events','none').text(text);
+        if(l2){addT(l1,-lh/2);addT(l2,lh/2+1);}else{addT(l1,0);}
+      });
+    })
+    .on('click',(e,d)=>{e.stopPropagation();handleClick(d.id);})
+    .on('touchend',(e,d)=>{e.preventDefault();e.stopPropagation();handleClick(d.id);})
+    .on('mouseenter',(e,d)=>{if(d.id!==activeId)d3.select(e.currentTarget).select('.cat-circle').attr('r',cr+3);showTip(e,`<strong style="font-family:'Playfair Display',serif">${d.name}</strong><br><span style="opacity:.65;font-size:10px">${d.skills.length} skills</span>`);})
+    .on('mousemove',moveTip).on('mouseleave',(e,d)=>{if(d.id!==activeId)d3.select(e.currentTarget).select('.cat-circle').attr('r',cr);hideTip();});
+}
+function animateCatNodes(newPos,dur){catLayer.selectAll('.cat-node').transition().duration(dur).ease(d3.easeCubicOut).attr('transform',d=>`translate(${newPos[d.id].x},${newPos[d.id].y})`);}
+function applyWatermark(id){catLayer.selectAll('.cat-node').each(function(d){const on=d.id===id;const cr=CAT_R();d3.select(this).select('.cat-circle').transition().duration(260).attr('fill-opacity',on?1:0.06).attr('r',on?cr+2:cr);d3.select(this).selectAll('.cat-text').transition().duration(260).attr('fill',on?'#ffffff':d.color).attr('fill-opacity',on?1:0.08);});}
+function resetWatermark(){const cr=CAT_R();catLayer.selectAll('.cat-node').each(function(){d3.select(this).select('.cat-circle').transition().duration(260).attr('fill-opacity',1).attr('r',cr);d3.select(this).selectAll('.cat-text').transition().duration(260).attr('fill','#ffffff').attr('fill-opacity',1);});}
+
+// Skill expansion
+function handleClick(id){
+  if(skillSim){skillSim.stop();skillSim=null;}
+  skillLineLayer.selectAll('*').remove();
+  skillNodeLayer.selectAll('*').remove();
+  if(activeId===id){deselect();return;}
+
+  // On mobile, show overlay panel instead of radial pills
+  if(window.innerWidth < 768){
+    const cat=CATS.find(c=>c.id===id);
+    const overlay=document.getElementById('skill-overlay');
+    const title=document.getElementById('skill-overlay-title');
+    const list=document.getElementById('skill-overlay-list');
+    title.textContent=cat.name;
+    title.style.color=cat.color;
+    list.style.setProperty('--overlay-color', cat.color);
+    list.innerHTML=cat.skills.map(s=>`<li style="--overlay-color:${cat.color}">${s}</li>`).join('');
+    overlay.classList.add('open');
+    applyWatermark(id);
+    activeId=id;
+    return;
+  }
+
+  activeId=id;
+  const cat=CATS.find(c=>c.id===id);
+  const shifted=computeShifted(id,basePositions);
+  const origin=shifted[id];
+  animateCatNodes(shifted,380);
+  transitionLines(shifted,true,380);
+  applyWatermark(id);
+
+  const {W,H}=svgSize();
+  const cx=W/2,cy=H/2,n=cat.skills.length;
+  const outAngle=Math.atan2(origin.y-cy,origin.x-cx);
+  const isOuter=cat.ring==='outer';
+  const fanAngle=isOuter?outAngle+Math.PI:outAngle;
+  const SPREAD=isOuter?(165*Math.PI/180):(270*Math.PI/180);
+
+  const scale=getScale();
+  const PILL_H=Math.round(20*scale);
+  const DOT_R=SKILL_R();
+  const FS=Math.max(8,Math.round(9*scale));
+  const GAP=Math.round(16*scale);
+  const PAD=Math.round(7*scale);
+  const INNER_GAP=Math.round(4*scale);
+
+  // Measure pill widths
+  const mSVG=document.getElementById('measure-svg');
+  function measureText(str){
+    const t=document.createElementNS('http://www.w3.org/2000/svg','text');
+    t.setAttribute('font-family','"DM Sans",sans-serif');
+    t.setAttribute('font-size',String(FS));
+    t.setAttribute('font-weight','500');
+    t.textContent=str;
+    mSVG.appendChild(t);
+    const w=t.getBBox().width;
+    mSVG.removeChild(t);
+    return w;
+  }
+  const pillWidths=cat.skills.map(s=>PAD+DOT_R*2+INNER_GAP+measureText(s)+PAD);
+  const maxPillW=Math.max(...pillWidths);
+
+  // Binary search for minimum orbit where no adjacent pill boxes overlap
+  function pillsOverlap(orbit){
+    for(let i=0;i<n-1;i++){
+      const a1=fanAngle-SPREAD/2+(n===1?0.5:i/(n-1))*SPREAD;
+      const a2=fanAngle-SPREAD/2+(n===1?0.5:(i+1)/(n-1))*SPREAD;
+      const x1=origin.x+orbit*Math.cos(a1),y1=origin.y+orbit*Math.sin(a1);
+      const x2=origin.x+orbit*Math.cos(a2),y2=origin.y+orbit*Math.sin(a2);
+      const pw1=pillWidths[i],pw2=pillWidths[i+1],margin=GAP;
+      if(x1+pw1/2+margin>x2-pw2/2 && x2+pw2/2+margin>x1-pw1/2 &&
+         y1+PILL_H/2+margin>y2-PILL_H/2 && y2+PILL_H/2+margin>y1-PILL_H/2) return true;
+    }
+    return false;
+  }
+  let lo=Math.max(isOuter?130:120, n>1?(maxPillW*(n-1))/SPREAD:130), hi=700;
+  for(let iter=0;iter<22;iter++){const mid=(lo+hi)/2;if(pillsOverlap(mid))lo=mid;else hi=mid;}
+  const ORBIT=Math.ceil(hi)+4;
+
+  // Pill positions
+  const skillData=cat.skills.map((s,si)=>{
+    const frac=n===1?0.5:si/(n-1);
+    const a=fanAngle-SPREAD/2+frac*SPREAD;
+    let sx=origin.x+ORBIT*Math.cos(a), sy=origin.y+ORBIT*Math.sin(a);
+    sx=Math.max(MARGIN_SIDE()*0.5,Math.min(W-MARGIN_SIDE()*0.5,sx));
+    sy=Math.max(MARGIN_TOP()*0.5,Math.min(H-MARGIN_BOTTOM()*0.5,sy));
+    return{name:s,color:cat.color,x:sx,y:sy,pw:pillWidths[si]};
+  });
+
+  // Spokes
+  skillData.forEach(d=>{
+    const t=trimLine(origin.x,origin.y,d.x,d.y,CAT_R(),PILL_H/2);
+    skillLineLayer.append('line').attr('x1',t.x1).attr('y1',t.y1).attr('x2',t.x2).attr('y2',t.y2).attr('stroke',cat.color).attr('stroke-width',Math.max(1,1.2*scale)).attr('stroke-opacity',0.55);
+  });
+
+  // Pills
+  skillData.forEach((d,di)=>{
+    const pw=d.pw, ph=PILL_H, rx=d.x-pw/2, ry=d.y-ph/2;
+    const dotCX=rx+PAD+DOT_R, textX=dotCX+DOT_R+INNER_GAP;
+    const grp=skillNodeLayer.append('g').attr('opacity',0)
+      .on('mouseenter',e=>showTip(e,d.name)).on('mousemove',moveTip).on('mouseleave',hideTip)
+      .on('touchend',e=>{e.preventDefault();showTip(e,d.name);setTimeout(hideTip,2000);});
+    grp.append('rect').attr('x',rx).attr('y',ry).attr('width',pw).attr('height',ph).attr('rx',ph/2).attr('fill','#f7f4ef').attr('stroke',cat.color).attr('stroke-width',Math.max(0.8,scale));
+    grp.append('circle').attr('cx',dotCX).attr('cy',d.y).attr('r',DOT_R).attr('fill',cat.color);
+    grp.append('text').attr('x',textX).attr('y',d.y).attr('dominant-baseline','central').attr('font-family','"DM Sans",sans-serif').attr('font-size',FS).attr('font-weight',500).attr('fill',cat.color).attr('pointer-events','none').text(d.name);
+    grp.transition().delay(di*35).duration(220).attr('opacity',1);
+  });
+  skillSim=null;
+}
+
+function deselect(){
+  if(skillSim){skillSim.stop();skillSim=null;}
+  skillLineLayer.selectAll('*').remove();
+  skillNodeLayer.selectAll('*').remove();
+  activeId=null;
+  animateCatNodes(basePositions,380);
+  transitionLines(basePositions,false,380);
+  resetWatermark();
+}
+
+const tip=document.getElementById('tip');
+function showTip(e,html){tip.style.opacity='1';tip.innerHTML=html;moveTip(e);}
+function moveTip(e){
+  const src=e.touches?e.touches[0]:e;
+  tip.style.left=(src.clientX+14)+'px';tip.style.top=(src.clientY-10)+'px';
+}
+function hideTip(){tip.style.opacity='0';}
+
+function init(){const{pos}=computeLayout();basePositions=pos;buildLines(pos);buildCatNodes(pos);}
+document.fonts.ready.then(init);
+
+window.addEventListener('resize',()=>{
+  const prev=activeId;
+  if(skillSim){skillSim.stop();skillSim=null;}
+  skillLineLayer.selectAll('*').remove();skillNodeLayer.selectAll('*').remove();
+  activeId=null;
+  const{pos}=computeLayout();basePositions=pos;buildLines(pos);buildCatNodes(pos);
+  if(prev)handleClick(prev);
+});
+
+</script>
+<script>
+
+  // Scroll animations
+  (function() {
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.05, rootMargin: '0px 0px 0px 0px' });
+    document.querySelectorAll('.fade-up, .fade-left, .fade-right').forEach(function(el) {
+      obs.observe(el);
+    });
+  })();
+
+  // Nav hamburger
+  const hamburger = document.getElementById('hamburger');
+  const drawer = document.getElementById('nav-drawer');
+
+  hamburger.addEventListener('click', () => {
+    const isOpen = hamburger.classList.toggle('open');
+    drawer.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-expanded', isOpen);
+    drawer.setAttribute('aria-hidden', !isOpen);
+  });
+
+  drawer.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      drawer.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', false);
+      drawer.setAttribute('aria-hidden', true);
+    });
+  });
+
+  // Nav scroll — always keep scrolled state
+  const nav = document.querySelector('nav');
+  nav.classList.add('scrolled');
+  window.addEventListener('scroll', () => {
+    nav.classList.add('scrolled');
+  });
+
+  // Approach tabs
+  document.querySelectorAll('.cs-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      const target = tab.dataset.tab;
+      document.querySelectorAll('.cs-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.cs-panel').forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById(target).classList.add('active');
+    });
+  });
+
+  // Solution carousel
+  let current = 0;
+  const cards = document.querySelectorAll('.cs-carousel-card');
+  const dots = document.querySelectorAll('.cs-dot');
+  const total = cards.length;
+
+  function goTo(index, dir) {
+    cards[current].classList.remove('active', 'dir-prev');
+    dots[current].classList.remove('active');
+    current = (index + total) % total;
+    cards[current].classList.remove('dir-prev');
+    if (dir === 'prev') cards[current].classList.add('dir-prev');
+    cards[current].classList.add('active');
+    dots[current].classList.add('active');
+  }
+
+  document.getElementById('cs-next').addEventListener('click', () => goTo(current + 1, 'next'));
+  document.getElementById('cs-prev').addEventListener('click', () => goTo(current - 1, 'prev'));
+  dots.forEach(dot => dot.addEventListener('click', () => goTo(+dot.dataset.dot, 'next')));
+
+  // Equalise carousel card heights
+  function equaliseCards() {
+    const inners = document.querySelectorAll('.cs-carousel-card-inner');
+    inners.forEach(el => el.style.minHeight = '');
+    let max = 0;
+    document.querySelectorAll('.cs-carousel-card').forEach(card => {
+      card.style.display = 'block';
+      max = Math.max(max, card.querySelector('.cs-carousel-card-inner').offsetHeight);
+      card.style.display = '';
+    });
+    document.querySelectorAll('.cs-carousel-card.active').forEach(card => card.style.display = '');
+    inners.forEach(el => el.style.minHeight = max + 'px');
+  }
+  window.addEventListener('load', equaliseCards);
+  window.addEventListener('resize', equaliseCards);
+
+  // Results click reveal
+  document.querySelectorAll('.cs-result-trigger').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const idx = btn.dataset.result;
+      const reveal = document.getElementById('result-' + idx);
+      const isActive = btn.classList.contains('active');
+      btn.classList.toggle('active', !isActive);
+      reveal.classList.toggle('visible', !isActive);
+    });
+  });
+
+  // Resume accordion
+  document.querySelectorAll('.resume-job .job-trigger').forEach(trigger => {
+    trigger.addEventListener('click', () => {
+      const job = trigger.closest('.resume-job');
+      const isOpen = job.classList.contains('open');
+      document.querySelectorAll('.resume-job').forEach(j => {
+        j.classList.remove('open');
+        j.querySelector('.job-trigger').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        job.classList.add('open');
+        trigger.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  // Scrollytelling bridge
+  const bridgeWrapper = document.getElementById('bridge-wrapper');
+  const bridgeCards = document.querySelectorAll('.bridge-card');
+  const bridgeDots = document.querySelectorAll('.bridge-dot');
+  const TOTAL_BRIDGE = bridgeCards.length;
+
+  function updateBridge() {
+    if (!bridgeWrapper) return;
+    const rect = bridgeWrapper.getBoundingClientRect();
+    const wrapperH = bridgeWrapper.offsetHeight;
+    const vh = window.innerHeight;
+    const scrolled = -rect.top;
+    const scrollable = wrapperH - vh;
+    const progress = Math.max(0, Math.min(1, scrolled / scrollable));
+    const step = Math.min(TOTAL_BRIDGE - 1, Math.floor(progress * TOTAL_BRIDGE));
+    bridgeCards.forEach((card, i) => {
+      card.classList.remove('visible', 'exiting');
+      if (i === step) card.classList.add('visible');
+      else if (i < step) card.classList.add('exiting');
+    });
+    bridgeDots.forEach((dot, i) => {
+      dot.classList.toggle('active', i === step);
+    });
+  }
+
+  window.addEventListener('scroll', updateBridge, { passive: true });
+  updateBridge();
+
+  // Hero canvas slashes
+  const canvas = document.getElementById('hero-canvas');
+  const ctx = canvas.getContext('2d');
+
+  function resize() {
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  let triggered = false;
+  let progress = 0;
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 60 && !triggered) triggered = true;
+  });
+
+  function lerp(a, b, t) { return a + (b - a) * t; }
+  function ease(t) { return 1 - Math.pow(1 - t, 4); }
+
+  const slashes = [
+    { yFrac: -0.15, offsetProgress: 0,    color: '#e85d4a', width: 10, alpha: 0.9,  side: 'left'  },
+    { yFrac:  0.08, offsetProgress: 0.08, color: '#e9a84c', width: 5,  alpha: 0.75, side: 'left'  },
+    { yFrac:  0.3,  offsetProgress: 0.15, color: '#e85d4a', width: 3,  alpha: 0.5,  side: 'left'  },
+    { yFrac: -0.1,  offsetProgress: 0,    color: '#e9a84c', width: 10, alpha: 0.9,  side: 'right' },
+    { yFrac:  0.12, offsetProgress: 0.08, color: '#e85d4a', width: 5,  alpha: 0.7,  side: 'right' },
+    { yFrac:  0.35, offsetProgress: 0.15, color: '#e9a84c', width: 3,  alpha: 0.5,  side: 'right' },
+  ];
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    const w = canvas.width;
+    const h = canvas.height;
+    const diag = Math.sqrt(w * w + h * h);
+    if (triggered && progress < 1) progress = Math.min(progress + 0.022, 1);
+    slashes.forEach(s => {
+      const localProgress = Math.max(0, progress - s.offsetProgress) / (1 - s.offsetProgress);
+      if (localProgress <= 0) return;
+      const e = ease(Math.min(localProgress, 1));
+      const yBase = h * s.yFrac;
+      const angle = Math.PI / 4.5;
+      const dx = Math.cos(angle) * diag;
+      const dy = Math.sin(angle) * diag;
+      let x1, y1, x2, y2;
+      if (s.side === 'left') {
+        const startX = -diag + e * (diag * 0.42);
+        x1 = startX; y1 = yBase - dy * 0.5;
+        x2 = startX + dx; y2 = yBase + dy * 0.5;
+      } else {
+        const startX = w + diag - e * (diag * 0.42);
+        x1 = startX - dx; y1 = yBase - dy * 0.5;
+        x2 = startX; y2 = yBase + dy * 0.5;
+      }
+      ctx.beginPath();
+      ctx.moveTo(x1, y1);
+      ctx.lineTo(x2, y2);
+      ctx.strokeStyle = s.color;
+      ctx.globalAlpha = s.alpha * e;
+      ctx.lineWidth = s.width;
+      ctx.lineCap = 'round';
+      ctx.stroke();
+      ctx.globalAlpha = 1;
+    });
+    requestAnimationFrame(draw);
+  }
+  requestAnimationFrame(draw);
+
+
+  // What You'll Get horizontal scrollytelling
+  (function() {
+    const whatOuter = document.getElementById('what-outer');
+    const whatTrack = document.getElementById('what-track');
+    const whatSlides = document.querySelectorAll('.what-slide');
+    const whatFill = document.getElementById('what-progress-fill');
+    const whatCurrent = document.getElementById('what-current');
+    const SLIDE_WIDTH = 320 + 32;
+    if (!whatOuter) return;
+
+    function updateWhat() {
+      const rect = whatOuter.getBoundingClientRect();
+      const wrapperH = whatOuter.offsetHeight;
+      const vh = window.innerHeight;
+      const scrolled = -rect.top;
+      const scrollable = wrapperH - vh;
+      const progress = Math.max(0, Math.min(1, scrolled / scrollable));
+
+      const totalSlides = whatSlides.length;
+      const maxOffset = (totalSlides - 1.5) * SLIDE_WIDTH;
+      const offset = progress * maxOffset;
+
+      whatTrack.style.transform = `translateX(-${offset}px)`;
+
+      const activeIndex = Math.min(totalSlides - 1, Math.round(offset / SLIDE_WIDTH));
+      whatSlides.forEach((slide, i) => {
+        slide.classList.remove('active', 'near');
+        if (i === activeIndex) slide.classList.add('active');
+        else if (Math.abs(i - activeIndex) === 1) slide.classList.add('near');
+      });
+
+      whatFill.style.width = (progress * 100) + '%';
+      whatCurrent.textContent = String(activeIndex + 1).padStart(2, '0');
+
+      // Show toolkit preview when on last card
+      const preview = document.getElementById('what-next-preview');
+      if (preview) {
+        if (activeIndex >= totalSlides - 1) preview.classList.add('visible');
+        else preview.classList.remove('visible');
+      }
+    }
+
+    window.addEventListener('scroll', updateWhat, { passive: true });
+    updateWhat();
+  })();
+
+
+  // Resume bridge canvas slashes
+  (function() {
+    const bridge = document.getElementById('resume-bridge-canvas');
+    if (!bridge) return;
+    const ctx = bridge.getContext('2d');
+    function resize() { bridge.width = bridge.offsetWidth; bridge.height = bridge.offsetHeight; }
+    resize();
+    window.addEventListener('resize', resize);
+
+    let progress = 0;
+    let isVisible = false;
+
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { isVisible = e.isIntersecting; });
+    }, { threshold: 0.1 });
+    obs.observe(bridge.parentElement);
+
+    const slashes = [
+      { yFrac: -0.12, offsetP: 0,    color: '#e85d4a', width: 14, alpha: 0.85, side: 'left'  },
+      { yFrac:  0.15, offsetP: 0.1,  color: '#e9a84c', width: 7,  alpha: 0.7,  side: 'left'  },
+      { yFrac:  0.4,  offsetP: 0.18, color: '#e85d4a', width: 4,  alpha: 0.4,  side: 'left'  },
+      { yFrac: -0.08, offsetP: 0,    color: '#e9a84c', width: 14, alpha: 0.85, side: 'right' },
+      { yFrac:  0.18, offsetP: 0.1,  color: '#e85d4a', width: 7,  alpha: 0.65, side: 'right' },
+      { yFrac:  0.45, offsetP: 0.18, color: '#e9a84c', width: 4,  alpha: 0.4,  side: 'right' },
+      { yFrac: -0.3,  offsetP: 0.05, color: '#e9a84c', width: 5,  alpha: 0.25, side: 'left'  },
+      { yFrac:  0.6,  offsetP: 0.22, color: '#e85d4a', width: 3,  alpha: 0.2,  side: 'right' },
+    ];
+
+    function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
+
+    function draw() {
+      ctx.clearRect(0, 0, bridge.width, bridge.height);
+      const w = bridge.width, h = bridge.height;
+      const diag = Math.sqrt(w * w + h * h);
+
+      if (isVisible && progress < 1) progress = Math.min(progress + 0.014, 1);
+      else if (!isVisible && progress > 0) progress = Math.max(progress - 0.01, 0);
+
+      slashes.forEach(s => {
+        const local = Math.max(0, (progress - s.offsetP) / (1 - s.offsetP));
+        if (local <= 0) return;
+        const e = easeOut(Math.min(local, 1));
+        const yBase = h * s.yFrac;
+        const angle = Math.PI / 4.5;
+        const dx = Math.cos(angle) * diag;
+        const dy = Math.sin(angle) * diag;
+        let x1, y1, x2, y2;
+        if (s.side === 'left') {
+          const sx = -diag + e * (diag * 0.52);
+          x1 = sx; y1 = yBase - dy * 0.5;
+          x2 = sx + dx; y2 = yBase + dy * 0.5;
+        } else {
+          const sx = w + diag - e * (diag * 0.52);
+          x1 = sx - dx; y1 = yBase - dy * 0.5;
+          x2 = sx; y2 = yBase + dy * 0.5;
+        }
+        ctx.beginPath();
+        ctx.moveTo(x1, y1);
+        ctx.lineTo(x2, y2);
+        ctx.strokeStyle = s.color;
+        ctx.globalAlpha = s.alpha * e;
+        ctx.lineWidth = s.width;
+        ctx.lineCap = 'round';
+        ctx.stroke();
+        ctx.globalAlpha = 1;
+      });
+      requestAnimationFrame(draw);
+    }
+    requestAnimationFrame(draw);
+  })();
+
+
+
+  // Awards divider canvas slashes
+  (function() {
+    const canvas = document.getElementById('awards-divider-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    function resize() { canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight; }
+    resize();
+    window.addEventListener('resize', resize);
+
+    let progress = 0, isVisible = false;
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { isVisible = e.isIntersecting; });
+    }, { threshold: 0.2 });
+    obs.observe(canvas.parentElement);
+
+    const slashes = [
+      { yFrac: -0.1,  offsetP: 0,    color: '#e85d4a', width: 12, alpha: 0.8,  side: 'left'  },
+      { yFrac:  0.2,  offsetP: 0.1,  color: '#e9a84c', width: 6,  alpha: 0.65, side: 'left'  },
+      { yFrac:  0.5,  offsetP: 0.18, color: '#e85d4a', width: 3,  alpha: 0.4,  side: 'left'  },
+      { yFrac: -0.06, offsetP: 0,    color: '#e9a84c', width: 12, alpha: 0.8,  side: 'right' },
+      { yFrac:  0.25, offsetP: 0.1,  color: '#e85d4a', width: 6,  alpha: 0.6,  side: 'right' },
+      { yFrac:  0.55, offsetP: 0.18, color: '#e9a84c', width: 3,  alpha: 0.35, side: 'right' },
+    ];
+
+    function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      const w = canvas.width, h = canvas.height;
+      const diag = Math.sqrt(w * w + h * h);
+      if (isVisible && progress < 1) progress = Math.min(progress + 0.018, 1);
+      else if (!isVisible && progress > 0) progress = Math.max(progress - 0.012, 0);
+      slashes.forEach(s => {
+        const local = Math.max(0, (progress - s.offsetP) / (1 - s.offsetP));
+        if (local <= 0) return;
+        const e = easeOut(Math.min(local, 1));
+        const yBase = h * s.yFrac;
+        const angle = Math.PI / 4.5;
+        const dx = Math.cos(angle) * diag;
+        const dy = Math.sin(angle) * diag;
+        let x1, y1, x2, y2;
+        if (s.side === 'left') {
+          const sx = -diag + e * (diag * 0.5);
+          x1 = sx; y1 = yBase - dy * 0.5; x2 = sx + dx; y2 = yBase + dy * 0.5;
+        } else {
+          const sx = w + diag - e * (diag * 0.5);
+          x1 = sx - dx; y1 = yBase - dy * 0.5; x2 = sx; y2 = yBase + dy * 0.5;
+        }
+        ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2);
+        ctx.strokeStyle = s.color; ctx.globalAlpha = s.alpha * e;
+        ctx.lineWidth = s.width; ctx.lineCap = 'round'; ctx.stroke();
+        ctx.globalAlpha = 1;
+      });
+      requestAnimationFrame(draw);
+    }
+    requestAnimationFrame(draw);
+  })();
+
+
+  // Skill overlay close
+  const skillOverlayClose = document.getElementById('skill-overlay-close');
+  const skillOverlay = document.getElementById('skill-overlay');
+  if(skillOverlayClose){
+    skillOverlayClose.addEventListener('click', () => {
+      skillOverlay.classList.remove('open');
+      activeId = null;
+      const {pos} = computeLayout();
+      buildCatNodes(pos);
+    });
+    skillOverlay.addEventListener('click', (e) => {
+      if(e.target === skillOverlay) {
+        skillOverlay.classList.remove('open');
+        activeId = null;
+      }
+    });
+  }
+
+  // Award stat counters
+  const counterObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el = e.target;
+      const target = +el.dataset.target;
+      const duration = 1200;
+      const start = performance.now();
+      function tick(now) {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.round(eased * target);
+        if (progress < 1) requestAnimationFrame(tick);
+        else el.textContent = target + '+';
+      }
+      requestAnimationFrame(tick);
+      counterObs.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.award-stat-num[data-target]').forEach(el => counterObs.observe(el));
+
+  // Flip cards touch support
+  document.querySelectorAll('.flip-card').forEach(card => {
+    card.addEventListener('click', () => card.classList.toggle('flipped'));
+  });
+
+</script>
+</body>
+</html>
